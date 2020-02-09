@@ -22,12 +22,13 @@ import {
           aria-hidden="false"
           matBadge="15"
           matBadgeColor="warn"
+          style="color:#393B3E "
           (click)="openBottomSheet()"
           >loyalty</mat-icon
         >
       </button>
       <button mat-icon-button (click)="openDialog()">
-        <mat-icon mat-icon-button class="example-icon" aria-hidden="false"
+        <mat-icon mat-icon-button  style="color:#393B3E"  class="example-icon" aria-hidden="false"
           >place</mat-icon
         >
       </button>
@@ -36,6 +37,7 @@ import {
       <button mat-menu-item (click)="openBottomSheet()">
         <mat-icon
           class="example-icon"
+          style="color:#393B3E "
           aria-hidden="false"
           matBadge="4"
           matBadgeColor="warn"
@@ -44,7 +46,7 @@ import {
         Nuevo
       </button>
       <button mat-menu-item (click)="openDialog()">
-        <mat-icon mat-icon-button class="example-icon" aria-hidden="false"
+        <mat-icon mat-icon-button class="example-icon" aria-hidden="false"  style="color:#393B3E "
           >place</mat-icon
         >
         Encuéntranos

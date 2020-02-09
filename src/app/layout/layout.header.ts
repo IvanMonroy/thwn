@@ -3,11 +3,12 @@ import { Component, Output, EventEmitter, Input } from "@angular/core";
 @Component({
   selector: "layout-header",
   template: `
-    <mat-toolbar style="background: crimson; color: white" class="example-toolbar">
+    <mat-toolbar style="background: white; color: #393B3E" class="example-toolbar">
       <mat-toolbar-row>
         <button mat-icon-button (click)="toggle()">
           <mat-icon>menu</mat-icon>
         </button>
+        <img src="../../assets/icons/logo-72x40.png"/>
         <h1 class="example-app-name">{{ title }}</h1>
         <span class="example-spacer"></span>
         <ng-container

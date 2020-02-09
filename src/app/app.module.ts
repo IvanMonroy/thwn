@@ -7,6 +7,7 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import {PrincipalPagesModule} from "./principal_pages/principal-pages.module"
 import { LayoutModule } from './layout/layout.module';
 import { AppComponent } from './app.component';
+import { MatIconModule } from "@angular/material/icon";
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,7 +17,8 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     MatSidenavModule,
     LayoutModule,
-    PrincipalPagesModule
+    PrincipalPagesModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

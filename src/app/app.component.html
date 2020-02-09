@@ -1,8 +1,12 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
   <layout-header (toggleEmit)="emitAction($event)" [medyaQueryParent]="mobileQuery"></layout-header>
   <mat-sidenav-container
     class="example-sidenav-container"
     [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
+    style="    -webkit-box-flex: 1;
+      flex: 1 0 auto;"
   >
     <mat-sidenav
       #sidenav
@@ -14,7 +18,48 @@
       <layout-nav-menu></layout-nav-menu>
     </mat-sidenav>
     <mat-sidenav-content>
-      <router-outlet></router-outlet>
+      <router-outlet  ></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
+  <footer class="page-footer footer-style font-small blue">
+    <div  class="col-xl-4 col-lg-4 col-md-4 col-sm-12  d-inline-flex" style="border-bottom-style: solid; border-bottom-color: green;" >
+      <mat-icon class="icon-footer" mat-list-icon >phone</mat-icon>
+      <p class="lighter-jumbotron icon-p" > <strong> WhatsApp </strong> <br> 311522152  </p>
+    </div>
+    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12  d-inline-flex" style="border-bottom-style: solid; border-bottom-color: royalblue;">
+      <mat-icon class="icon-footer" mat-list-icon >map</mat-icon>
+      <p class="lighter-jumbotron icon-p" > <strong> Bogotá, Colombia. </strong> <br> Cra. 28a #66 - 73  </p>
+    </div>
+    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12  d-inline-flex" style="border-bottom-style: solid; border-bottom-color: #BF282F;">
+      <mat-icon class="icon-footer" mat-list-icon >build</mat-icon>
+      <p class="lighter-jumbotron icon-p" > <strong> Asistencia Técnica </strong> <br> 311522152  </p>
+    </div>
+   
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12  d-inline-flex">
+  <img style="margin: 10px auto; display: block;" src="../../assets/icons/logo-128x72.png" alt="">
 </div>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12  d-inline-flex">
+  </div>
+  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12  d-inline-flex">
+    <a href="#" class="fa fa-facebook"></a>
+    <a href="#" class="fa fa-twitter"></a>
+    <a href="#" class="fa fa-youtube"></a>
+<a href="#" class="fa fa-instagram"></a>
+  </div>
+  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12  d-inline-flex">
+  </div>
+</div>
+
+<div style="background-color: #BF282F; color: white;" class="footer-copyright text-center py-3">© 2020 Copyright:
+  <a href="https://github.com/IvanMonroy"> Tecni-Hidráulicos Willreyn</a>
+    </div>
+  </footer>
+
+
+
+</div>
+
+
+
