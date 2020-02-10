@@ -20,6 +20,7 @@ import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
 import { MatMenuModule } from "@angular/material/menu";
 import { FormsModule } from "@angular/forms";
 import { MatDialogModule } from "@angular/material/dialog";
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { MatDialogModule } from "@angular/material/dialog";
     MatMenuModule,
     MatBottomSheetModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatExpansionModule
   ]
 })
 export class LayoutModule {}
