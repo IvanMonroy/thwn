@@ -5,6 +5,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import {PrincipalPagesModule} from "./principal_pages/principal-pages.module"
+import {QueryListsPagesModule} from "./principal_pages/query-lists-pages.module"
 import { LayoutModule } from './layout/layout.module';
 import { AppComponent } from './app.component';
 import { MatIconModule } from "@angular/material/icon";
@@ -18,6 +19,7 @@ import { MatIconModule } from "@angular/material/icon";
     MatSidenavModule,
     LayoutModule,
     PrincipalPagesModule,
+    QueryListsPagesModule,
     MatIconModule
   ],
   providers: [],

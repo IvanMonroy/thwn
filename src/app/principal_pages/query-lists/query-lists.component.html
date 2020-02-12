@@ -1,0 +1,64 @@
+<mat-tab-group dynamicHeight>
+  <mat-tab label="Todos los productos">
+   
+   
+
+    <div class="container">
+      <br>
+     <h4 style="text-align: center;">NUESTROS PRODUCTOS</h4>
+    <br>
+    <div class="row" id="ads">
+      <!-- Category Card -->
+      <div class="col-md-4" style="margin-top: 25px;"  *ngFor="let product of products">
+          <div class="card rounded">
+              <div class="card-image">
+                  <span class="card-notify-badge">{{product.name }}</span>
+                  <span class="card-notify-year">{{product.available == 'true' ? '30% off' : '0% off'}}</span>
+                  <img class="img-fluid" src="{{product.imgUrl}}" alt="Alternate Text" />
+              </div>
+              <div class="card-image-overlay m-auto">
+                  <span class="card-detail-badge">{{product.description}}</span>
+                  <span class="card-detail-badge">{{product.price}}</span>
+                  <span class="card-detail-badge">{{product.mark}}</span>
+              </div>
+              <div class="card-body text-center">
+                  <div class="ad-title m-auto">
+                      <h5>Honda Accord LX</h5>
+                  </div>
+                  <a class="ad-btn" href="#">View</a>
+              </div>
+          </div>
+      </div>
+  
+  
+  
+  </div>
+  </div>
+
+   
+   
+   
+  </mat-tab>
+  <mat-tab label="Long tab">
+    <div class="example-large-box mat-elevation-z4 d-inline-flex">
+      Large content
+    </div>
+       <div class="example-large-box mat-elevation-z4">
+      Large content
+    </div>
+       <div class="example-large-box mat-elevation-z4">
+      Large content
+    </div>
+       <div class="example-large-box mat-elevation-z4">
+      Large content
+    </div>
+       <div class="example-large-box mat-elevation-z4">
+      Large content
+    </div>
+  </mat-tab>
+</mat-tab-group>
+
+
+<!-- Copyright 2019 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->
