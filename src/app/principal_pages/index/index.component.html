@@ -188,7 +188,7 @@
       <div class="carousel-item active" style="height: 550px;">
         <img src="../../assets/icons/marcas-de-herramientas.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
-          <h5>¡Conoce nuestros productos!</h5>
+          <h5 style="cursor: pointer;" [routerLink]="['/products']"   >¡Conoce nuestros productos!</h5>
           <p>
             Conoce todos los productos que ofrecemos para tí. En esta sección encontrarás todas las marcas de productos que tenemos disponibles.
           </p>
@@ -197,14 +197,14 @@
       <div class="carousel-item" style="height: 550px;">
         <img src="../../assets/icons/IMG-20200207-WA0004.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
-          <h5>¡Echa un vistazo a nuestros trabajos!</h5>
+          <h5 style="cursor: pointer;">¡Echa un vistazo a nuestros trabajos!</h5>
           <p>Más de x años de experiencia ofreciendo nuestros mejores productos y servicios.</p>
         </div>
       </div>
       <div class="carousel-item" style="height: 550px;">
         <img src="../../assets/icons/IMG-20200204-WA0003.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
-          <h5  style="color:#393B3E ">¡Encuéntranos!</h5>
+          <h5  style="color:#393B3E; cursor: pointer;"  (click)="openDialog()">¡Encuéntranos!</h5>
           <p  style="color:#393B3E ">Encuéntranos en Bogotá Cra. 28a #66 - 73</p>
         </div>
       </div>

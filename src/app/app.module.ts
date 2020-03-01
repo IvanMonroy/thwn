@@ -9,6 +9,7 @@ import {QueryListsPagesModule} from "./principal_pages/query-lists-pages.module"
 import { LayoutModule } from './layout/layout.module';
 import { AppComponent } from './app.component';
 import { MatIconModule } from "@angular/material/icon";
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +21,8 @@ import { MatIconModule } from "@angular/material/icon";
     LayoutModule,
     PrincipalPagesModule,
     QueryListsPagesModule,
-    MatIconModule
+    MatIconModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-import { Component, Input, Inject } from "@angular/core";
+import { Component, Input, Inject, OnInit, OnDestroy } from "@angular/core";
 import {
   MatBottomSheet,
   MatBottomSheetRef,
@@ -6,6 +6,11 @@ import {
   MAT_DIALOG_DATA,
   MatDialog
 } from "@angular/material";
+import { Observable, SubscriptionLike } from 'rxjs';
+import { FormControl } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { GlobalThingsService } from '../services/global/global-things.service';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: "layout-tools",
   template: `
@@ -20,7 +25,7 @@ import {
         <mat-icon
           class="example-icon"
           aria-hidden="false"
-          matBadge="15"
+          matBadge="4"
           matBadgeColor="warn"
           style="color:#393B3E "
           (click)="openBottomSheet()"
@@ -84,49 +89,55 @@ export class LayoutToolsComponent {
 @Component({
   selector: "bottom-sheet-overview-example-sheet",
   template: `
-    <mat-nav-list>
-      <a
-        href="https://keep.google.com/"
-        mat-list-item
-        (click)="openLink($event)"
-      >
-        <span mat-line>Google Keep</span>
-        <span mat-line>Add to a note</span>
+    <mat-nav-list *ngFor="let new of news" >
+      <a href="#" mat-list-item (click)="openLink($event)">
+        <span mat-line>{{new.title}}</span>
+        <span mat-line>Conoce más sobre está noticia dancho click aquí</span>
       </a>
 
-      <a
-        href="https://docs.google.com/"
-        mat-list-item
-        (click)="openLink($event)"
-      >
-        <span mat-line>Google Docs</span>
-        <span mat-line>Embed in a document</span>
-      </a>
-
-      <a
-        href="https://plus.google.com/"
-        mat-list-item
-        (click)="openLink($event)"
-      >
-        <span mat-line>Google Plus</span>
-        <span mat-line>Share with your friends</span>
-      </a>
-
-      <a
-        href="https://hangouts.google.com/"
-        mat-list-item
-        (click)="openLink($event)"
-      >
-        <span mat-line>Google Hangouts</span>
-        <span mat-line>Show to your coworkers</span>
-      </a>
     </mat-nav-list>
+
   `
 })
-export class BottomSheetOverviewExampleSheet {
+export class BottomSheetOverviewExampleSheet implements OnInit, OnDestroy {
+  title = 'app';
+  news: Observable<any[]>;
+  dataFiltered: Observable<any[]>;
+  filter: FormControl;
+  filter$: Observable<string>;
+  model: string = 'index_news/index_pp';
+  icon: string;
+  tittle: string;
+  color = 'primary';
+  mode = 'indeterminate';
+  value = 50;
+  subscription: SubscriptionLike;
+  newVehicle: Observable<any[]>;
+
   constructor(
+    private globalService: GlobalThingsService,
+    private http: HttpClient,
+    public dialog: MatDialog,
+    private activatedRoute: ActivatedRoute,
     private _bottomSheetRef: MatBottomSheetRef<BottomSheetOverviewExampleSheet>
-  ) {}
+  ) {
+    this.subscription =  this.globalService.GetAllModel(this.model).subscribe((data: any[]) => {
+      console.log(data);
+      this.news = data['data'];
+    })
+
+    console.log("Subscription " + this.tittle + this.subscription.closed);
+  }
+
+  ngOnInit() {
+   
+
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+    console.log(this.subscription.closed);
+  }
 
   openLink(event: MouseEvent): void {
     this._bottomSheetRef.dismiss();

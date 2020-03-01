@@ -4,13 +4,20 @@ import { AppRoutingModule } from '../app-routing.module';
 import {QueryListsComponent} from './query-lists/query-lists.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MatIconModule } from "@angular/material/icon";
+import {RouterModule} from '@angular/router';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import { GalleryImagesComponent } from './gallery-images/gallery-images.component';
 
 @NgModule({
   declarations: [
-    QueryListsComponent
+    QueryListsComponent,
+    GalleryImagesComponent
   ],
   exports: [
     QueryListsComponent,
+    GalleryImagesComponent
   ],
   entryComponents:  [
   ],
@@ -18,7 +25,9 @@ import { MatIconModule } from "@angular/material/icon";
     CommonModule,
     AppRoutingModule,
     MatIconModule,
-    MatTabsModule
+    MatTabsModule,
+    RouterModule,
+    MatFormFieldModule,FormsModule, ReactiveFormsModule,MatInputModule
   ],
   providers: []
 })

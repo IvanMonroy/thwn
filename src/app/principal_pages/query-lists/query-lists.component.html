@@ -7,25 +7,27 @@
       <br>
      <h4 style="text-align: center;">NUESTROS PRODUCTOS</h4>
     <br>
+    <div class="container-fluid">
+      <mat-form-field appearance="legacy">
+          <mat-label class="span_color_black">Busca tu producto aquí</mat-label>
+          <input matInput [name]="filter" [formControl]="filter" placeholder="Llantas" autocomplete="off"
+              data-toggle="tooltip" data-placement="right" title="El formulario es sensible a máyusculas y mínusculas.">
+      </mat-form-field>
+  </div>
+  
     <div class="row" id="ads">
       <!-- Category Card -->
-      <div class="col-md-4" style="margin-top: 25px;"  *ngFor="let product of products">
+      <div class="col-md-4" style="margin-top: 25px;" *ngFor="let product of dataFiltered | async" >
           <div class="card rounded">
               <div class="card-image">
                   <span class="card-notify-badge">{{product.name }}</span>
                   <span class="card-notify-year">{{product.available == 'true' ? '30% off' : '0% off'}}</span>
-                  <img class="img-fluid" src="{{product.imgUrl}}" alt="Alternate Text" />
+                  <img class="img-fluid" src="{{'https://willreyn-admin.herokuapp.com/uploads/product/image/' + product.id + '/' + product.image}}" height="1000" width="1000" alt="{{product.name}}" />
               </div>
               <div class="card-image-overlay m-auto">
                   <span class="card-detail-badge">{{product.description}}</span>
                   <span class="card-detail-badge">{{product.price}}</span>
                   <span class="card-detail-badge">{{product.mark}}</span>
-              </div>
-              <div class="card-body text-center">
-                  <div class="ad-title m-auto">
-                      <h5>Honda Accord LX</h5>
-                  </div>
-                  <a class="ad-btn" href="#">View</a>
               </div>
           </div>
       </div>
@@ -39,6 +41,7 @@
    
    
   </mat-tab>
+  <!-- 
   <mat-tab label="Long tab">
     <div class="example-large-box mat-elevation-z4 d-inline-flex">
       Large content
@@ -56,6 +59,7 @@
       Large content
     </div>
   </mat-tab>
+   -->
 </mat-tab-group>
 
 
