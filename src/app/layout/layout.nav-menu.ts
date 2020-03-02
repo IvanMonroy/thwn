@@ -30,13 +30,13 @@ export class LayoutNavMenuComponent {
     this.fillerNav = [
       {
         icon: "home",
-        name: "Inicio",
-        route: "index"
+        name: "Página principal",
+        route: ""
       },
       {
-        icon: "face",
-        name: "Usuarios",
-        route: "users"
+        icon: "image_search",
+        name: "Conoce nuestros productos",
+        route: "products"
       },
       {
         icon: "description",

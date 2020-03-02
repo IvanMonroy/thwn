@@ -131,7 +131,7 @@ export class BottomSheetOverviewExampleSheet implements OnInit, OnDestroy {
 
   ngOnInit() {
    
-
+console.log( this.news)
   }
 
   ngOnDestroy() {

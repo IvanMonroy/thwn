@@ -63,5 +63,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-form-field-appearance-legacy .mat-form-field-label {
   color: rgba(0,0,0,.54) !important;
 }
+.g-image-item {
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  width: 45% !important;
+  height: 100% !important;
+}
 
 @import "~bootstrap/dist/css/bootstrap.css";

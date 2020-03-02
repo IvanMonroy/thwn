@@ -18,7 +18,7 @@ const routes: Routes = [
 {
   path: "images",
   component: GalleryImagesComponent,
-  data: { title: "Imagenes", items_icon: 'directions_car', model: 'images' }
+  data: { title: "Imagenes", items_icon: 'directions_car', model: 'works' }
 }
 
 ];

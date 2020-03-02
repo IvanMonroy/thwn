@@ -9,6 +9,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import { GalleryImagesComponent } from './gallery-images/gallery-images.component';
+import { MatButtonModule, MatToolbarModule } from '@angular/material';
+import { GalleryModule } from '@ngx-gallery/core';
+import { LightboxModule } from '@ngx-gallery/lightbox';
+import { GallerizeModule } from '@ngx-gallery/gallerize';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +32,10 @@ import { GalleryImagesComponent } from './gallery-images/gallery-images.componen
     MatIconModule,
     MatTabsModule,
     RouterModule,
-    MatFormFieldModule,FormsModule, ReactiveFormsModule,MatInputModule
+    MatFormFieldModule,FormsModule, ReactiveFormsModule,MatInputModule,
+    GalleryModule,
+    LightboxModule,
+    GallerizeModule
   ],
   providers: []
 })
