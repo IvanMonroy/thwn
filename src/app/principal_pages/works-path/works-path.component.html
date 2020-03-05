@@ -1,0 +1,47 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<br>
+<h4 style="text-align: center;">DOCUMENTAMOS NUESTROS TRABAJOS</h4>
+<br>
+
+<div class="container">
+    <div class="container-fluid">
+        <mat-form-field appearance="legacy">
+            <mat-label class="span_color_black">Fitra aquí</mat-label>
+            <input matInput [name]="filter" [formControl]="filter" placeholder="Llantas" autocomplete="off"
+                data-toggle="tooltip" data-placement="right" title="El formulario es sensible a máyusculas y mínusculas.">
+        </mat-form-field>
+       </div>
+    <div class="row">
+        <div class="col-md-3 col-sm-6" *ngFor="let product of dataFiltered | async">
+            <div class="product-grid9">
+                <div class="product-image9">
+                    <a [routerLink]="['/images/' + product.id]">
+                        <img class="pic-1" [src]="'https://willreyn-admin.herokuapp.com/uploads/product/image/' + product.id + '/' + product.first_image "  onError="this.src='https://media.istockphoto.com/vectors/cartoon-funny-cat-on-page-404-vector-flat-illustration-the-character-vector-id993443850?k=6&m=993443850&s=170667a&w=0&h=vUe-b3pWMRbYq1AV_GNzgmok7VLYuZ8T0jKkcoLmTM8='">
+                        <img class="pic-2" src="https://cdn.dribbble.com/users/934289/screenshots/3914393/gallery_icon.png">
+                    </a>
+                    <a [routerLink]="['/images/' + product.id]" class="fa fa-search product-full-view"></a>
+                </div>
+                <div class="product-content">
+                    <ul class="rating">
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                    </ul>
+                    <h3 class="title"><a [routerLink]="['/images/' + product.id]">{{product.title}}</a></h3>
+                    <div class="price"> {{product.description}}</div>
+                    <a class="add-to-cart" [routerLink]="['/images/' + product.id]" >Ver más imagenes</a>
+                </div>
+            </div>
+        </div> 
+    
+    </div>
+</div>
+<hr>

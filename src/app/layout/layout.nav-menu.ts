@@ -40,8 +40,8 @@ export class LayoutNavMenuComponent {
       },
       {
         icon: "description",
-        name: "Programación",
-        route: "programation"
+        name: "Echa un vistazo a nuestros trabajos",
+        route: "works-path"
       },
       {
         icon: "extension",

@@ -1,13 +1,13 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { Gallery, GalleryItem, ImageItem, ThumbnailsPosition, ImageSize } from '@ngx-gallery/core';
 import { Lightbox } from '@ngx-gallery/lightbox';
-import { map, startWith } from 'rxjs/operators';
+import { map, startWith, switchMap } from 'rxjs/operators';
 import { Observable, SubscriptionLike, combineLatest } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { GlobalThingsService } from 'src/app/services/global/global-things.service';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-gallery-images',
@@ -53,6 +53,7 @@ export class GalleryImagesComponent implements OnInit {
 
   constructor(
     private globalService: GlobalThingsService,
+    private route: ActivatedRoute,
     private http: HttpClient,
     public dialog: MatDialog,
     private activatedRoute: ActivatedRoute,
@@ -60,10 +61,13 @@ export class GalleryImagesComponent implements OnInit {
     public lightbox: Lightbox) {
       this.activatedRoute.data.subscribe(data => {
         document.title = data.title,
-          this.model = 'works/index_gallery/2',
+          this.model = 'works/index_gallery/',
           this.icon = data.items_icon,
           this.tittle = data.title
         });
+        this.model = this.model + this.route.snapshot.paramMap.get('id');
+      
+        console.log(this.model)
 
      }
 

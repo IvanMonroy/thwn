@@ -13,16 +13,19 @@ import { MatButtonModule, MatToolbarModule } from '@angular/material';
 import { GalleryModule } from '@ngx-gallery/core';
 import { LightboxModule } from '@ngx-gallery/lightbox';
 import { GallerizeModule } from '@ngx-gallery/gallerize';
+import { WorksPathComponent } from './works-path/works-path.component';
 
 
 @NgModule({
   declarations: [
     QueryListsComponent,
-    GalleryImagesComponent
+    GalleryImagesComponent,
+    WorksPathComponent
   ],
   exports: [
     QueryListsComponent,
-    GalleryImagesComponent
+    GalleryImagesComponent,
+    WorksPathComponent
   ],
   entryComponents:  [
   ],
@@ -35,7 +38,7 @@ import { GallerizeModule } from '@ngx-gallery/gallerize';
     MatFormFieldModule,FormsModule, ReactiveFormsModule,MatInputModule,
     GalleryModule,
     LightboxModule,
-    GallerizeModule
+    GallerizeModule,
   ],
   providers: []
 })

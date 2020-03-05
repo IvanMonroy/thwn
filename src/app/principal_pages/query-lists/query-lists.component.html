@@ -14,31 +14,37 @@
               data-toggle="tooltip" data-placement="right" title="El formulario es sensible a máyusculas y mínusculas.">
       </mat-form-field>
   </div>
-  
-    <div class="row" id="ads">
-      <!-- Category Card -->
-      <div class="col-md-4" style="margin-top: 25px;" *ngFor="let product of dataFiltered | async" >
-          <div class="card rounded">
-              <div class="card-image">
-                  <span class="card-notify-badge">{{product.name }}</span>
-                  <span class="card-notify-year">{{product.available == 'true' ? '30% off' : '0% off'}}</span>
-                  <img class="img-fluid" src="{{'https://willreyn-admin.herokuapp.com/uploads/product/image/' + product.id + '/' + product.image}}" height="1000" width="1000" alt="{{product.name}}" />
-              </div>
-              <div class="card-image-overlay m-auto">
-                  <span class="card-detail-badge">{{product.description}}</span>
-                  <span class="card-detail-badge">{{product.price}}</span>
-                  <span class="card-detail-badge">{{product.mark}}</span>
-              </div>
-          </div>
-      </div>
-  
-  
-  
-  </div>
-  </div>
 
-   
-   
+      <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6" *ngFor="let product of dataFiltered | async">
+                <div class="product-grid8">
+                    <div class="product-image8">
+                        <a href="#">
+                            <img class="pic-1" [src]="'https://willreyn-admin.herokuapp.com/uploads/product/image/' + product.id + '/' + product.image "  onError="this.src='https://www.frostcouture.ie/skin/frontend/rwd/acjewellary/images/empty_cart.png'"  height="1000" width="1000" alt="{{product.name}}">
+                            <img class="pic-2" src=" https://acuranavi.navigation.com/static/WFS/Shop-Site/-/Shop/en_US/Product%20Not%20Found.png">
+                        </a>
+                        <ul class="social">
+                            <li><a href="" class="fa fa-search"></a></li>
+                            <li><a href="" class="fa fa-shopping-bag"></a></li>
+                            <li><a href="" class="fa fa-shopping-cart"></a></li>
+                        </ul>
+                        <span class="product-discount-label">{{product.available == 'true' ? 'Disponibles' : 'Agotados'}}</span>
+                    </div>
+                    <div class="product-content">
+                        <div class="price">{{product.name }}
+                            <span>{{product.mark}}</span>
+                        </div>
+                        <span class="product-shipping">{{product.price}}</span>
+                        <h3 class="title"><a href="#">{{product.description}}</a></h3>
+                        <a class="all-deals" href="">¡Ven y compruebalo! <i class="fa fa-angle-right icon"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
    
   </mat-tab>
   <!-- 
