@@ -61,7 +61,7 @@ export class GalleryImagesComponent implements OnInit {
     public lightbox: Lightbox) {
       this.activatedRoute.data.subscribe(data => {
         document.title = data.title,
-          this.model = 'works/index_gallery/',
+          this.model = 'works/index_gallery_url/',
           this.icon = data.items_icon,
           this.tittle = data.title
         });

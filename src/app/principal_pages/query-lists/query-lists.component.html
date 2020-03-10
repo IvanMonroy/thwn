@@ -21,8 +21,8 @@
                 <div class="product-grid8">
                     <div class="product-image8">
                         <a href="#">
-                            <img class="pic-1" [src]="'https://willreyn-admin.herokuapp.com/uploads/product/image/' + product.id + '/' + product.image "  onError="this.src='https://www.frostcouture.ie/skin/frontend/rwd/acjewellary/images/empty_cart.png'"  height="1000" width="1000" alt="{{product.name}}">
-                            <img class="pic-2" src=" https://acuranavi.navigation.com/static/WFS/Shop-Site/-/Shop/en_US/Product%20Not%20Found.png">
+                            <img class="pic-1" [src]="product.imgurl "  onError="this.src='../../../assets/images/item-not-found.png'"  height="1000" width="1000" alt="{{product.name}}">
+                            <img class="pic-2" src="../../../assets/images/no-found.png " height="1000" width="1000">
                         </a>
                         <ul class="social">
                             <li><a href="" class="fa fa-search"></a></li>
