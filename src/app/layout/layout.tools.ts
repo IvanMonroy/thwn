@@ -90,7 +90,7 @@ export class LayoutToolsComponent {
   selector: "bottom-sheet-overview-example-sheet",
   template: `
     <mat-nav-list *ngFor="let new of news" >
-      <a href="#" mat-list-item (click)="openLink($event)">
+      <a href="/news-path/{{new.id}}" mat-list-item >
         <span mat-line>{{new.title}}</span>
         <span mat-line>Conoce más sobre está noticia dancho click aquí</span>
       </a>
