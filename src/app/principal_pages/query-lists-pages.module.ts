@@ -14,18 +14,21 @@ import { GalleryModule } from '@ngx-gallery/core';
 import { LightboxModule } from '@ngx-gallery/lightbox';
 import { GallerizeModule } from '@ngx-gallery/gallerize';
 import { WorksPathComponent } from './works-path/works-path.component';
+import { NewsPathComponent } from './news-path/news-path.component';
 
 
 @NgModule({
   declarations: [
     QueryListsComponent,
     GalleryImagesComponent,
-    WorksPathComponent
+    WorksPathComponent,
+    NewsPathComponent
   ],
   exports: [
     QueryListsComponent,
     GalleryImagesComponent,
-    WorksPathComponent
+    WorksPathComponent,
+    NewsPathComponent
   ],
   entryComponents:  [
   ],

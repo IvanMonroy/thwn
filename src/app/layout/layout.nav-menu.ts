@@ -44,9 +44,9 @@ export class LayoutNavMenuComponent {
         route: "works-path"
       },
       {
-        icon: "extension",
-        name: "Operación",
-        route: "operation"
+        icon: "dashboard",
+        name: "Noticias",
+        route: "news-path/2"
       },
       {
         icon: "remove_red_eye",

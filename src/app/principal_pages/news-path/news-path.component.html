@@ -1,0 +1,96 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<section class="banner-section" [style.background-image]="'url('+data.img_url_one+')'" style="background-size:cover; height: 380px; left: 0; position: absolute; top: 0; background-position:0;">
+</section>
+<section class="post-content-section">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 post-title-block">
+
+        <h1 class="text-center">{{data.title}}</h1>
+        <ul class="list-inline text-center">
+          <li>{{data.note_1}}</li>
+
+        </ul>
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-12">
+        <p class="lead"style="margin-top: 25px;">Queremos que sepas lo importante que eres para nosotros, te invitamos para que leas esta y muchas mas noticias de descuentos y promociones que tenemos para tí.</p>
+
+        <p>{{data.bodyone}} </p>
+        <blockquote>
+          <p>{{data.note_1}}.</p>
+          <footer>Administrador del sitio <cite title="Source Title">Willreyn</cite></footer>
+        </blockquote>
+        <p class="lead"style="margin-top: 25px;">{{data.subtitle}}</p>
+        <p>{{data.bodytwho}}</p>
+
+        <div class="image-block">
+          <img [src]="data.img_url_two "  onError="this.src='../../../assets/images/item-not-found.png'" class="img-responsive">
+        </div>
+        <p class="lead"style="margin-top: 25px;">{{data.subtitletwo}}</p>
+        <p>{{data.bodythree}}</p>
+        <blockquote>
+          <p>{{data.note_2}}</p>
+
+        </blockquote>
+
+        <div class="image-block">
+          <img [src]="data.img_url_three "  onError="this.src='../../../assets/images/item-not-found.png'" class="img-responsive">
+        </div>
+
+        <p>Gracias por leernos, enteraté de más noticias en aquí.</p>
+
+      </div>
+      <div class="col-lg-3  col-md-3 col-sm-12">
+        <div class="well">
+          <h2>¡Suscríbase!</h2>
+          <p>Subscríbase y reciba todas nuestras noticias y promociones (Proximamente)</p>
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Ingrese su email...">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button">Suscribir!</button>
+            </span>
+          </div>
+        </div>
+        <div class="well">
+          <h2>Compartir (Próximamente)</h2>
+          <ul class="list-inline">
+            <li><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></li>
+            <li><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></li>
+            <li><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></li>
+            <li><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></li>
+
+          </ul>
+        </div>
+        <div class="well">
+          <h2>Autor</h2>
+          <img src="" class="img-rounded" />
+          <p>{{data.autor}}</p>
+        </div>
+        <div class="list-group">
+          <a *ngFor="let data2 of header" class="list-group-item active" style="cursor: pointer;" href="/news-path/{{data2.id}}" >
+            <h4 class="list-group-item-heading">{{data2.autor}}</h4>
+            <p class="list-group-item-text">{{data2.note_2}}</p>
+          </a>
+         </div>
+        <div class="well">
+          <div class="media" *ngFor="let data3 of header" >
+            <div class="media-left"> <a href="/news-path/{{data3.id}}" > <img data-src="holder.js/64x64" class="media-object" alt="64x64"
+                  style="width: 64px; height: 64px;"
+                  [src]="data3.img_url_one"
+                  data-holder-rendered="true"> </a> </div>
+            <div class="media-body">
+              <h4 class="media-heading" style="cursor: pointer;"><a href="/news-path/{{data3.id}}"> {{data3.title}} </a> </h4> Lea la noticia completa en el enlace.
+            </div>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+
+
+  </div> <!-- /container -->
+</section>

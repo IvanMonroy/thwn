@@ -4,6 +4,7 @@ import {IndexComponent} from './principal_pages/index/index.component'
 import {QueryListsComponent} from './principal_pages/query-lists/query-lists.component'
 import { GalleryImagesComponent } from './principal_pages/gallery-images/gallery-images.component';
 import { WorksPathComponent } from './principal_pages/works-path/works-path.component';
+import { NewsPathComponent } from './principal_pages/news-path/news-path.component';
 
 const routes: Routes = [
 {
@@ -25,6 +26,11 @@ const routes: Routes = [
   path: "works-path",
   component: WorksPathComponent,
   data: { title: "Nuestros trabajos", items_icon: 'directions_car', model: 'works' }
+},
+{
+  path: "news-path/:id",
+  component: NewsPathComponent,
+  data: { title: "Noticias", items_icon: 'directions_car', model: 'news' }
 }
 
 ];
