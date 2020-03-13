@@ -17,7 +17,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     /* Make sure the toolbar will stay on top of the content as it scrolls past. */
     z-index: 2;
   }
-
+  .is-mobile {
+   display: none !important;
+    /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+  }
+  .is-mobile-new{
+    height: 500px !important;
+  }
   h1.example-app-name {
     margin-left: 8px;
   }
@@ -62,10 +68,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   color: rgba(0,0,0,.54) !important;
 }
 .g-image-item {
-  background-position: center center !important;
   background-repeat: no-repeat !important;
-  background-size: cover !important;
-  width: 45% !important;
+  background-position: center center !important;
+  width: 100% !important;
   height: 100% !important;
 }
 

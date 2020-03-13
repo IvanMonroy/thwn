@@ -2,7 +2,7 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-<section class="banner-section" [style.background-image]="'url('+data.img_url_one+')'" style="background-size:cover; height: 380px; left: 0; position: absolute; top: 0; background-position:0;">
+<section class="banner-section" [style.background-image]="'url('+data.img_url_one+')'" [class.is-mobile-new]="mobileQuery.matches" style="background-size:cover; height: 380px; left: 0; position: absolute; top: 0; background-position:0;">
 </section>
 <section class="post-content-section">
   <div class="container">

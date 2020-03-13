@@ -1,10 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Observable, SubscriptionLike } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { GlobalThingsService } from 'src/app/services/global/global-things.service';
 import { HttpClient } from '@angular/common/http';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSidenav } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
+import { MediaMatcher } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-news-path',
@@ -26,13 +27,22 @@ export class NewsPathComponent  implements OnInit, OnDestroy {
   value = 50;
   subscription: SubscriptionLike;
   newVehicle: Observable<any[]>;
+
+
+  mobileQuery: MediaQueryList;
+  @ViewChild("sidenav", { static: true }) sidenav: MatSidenav;
+  title = 'tecni-hidraulicos';
+  
   constructor(
     private globalService: GlobalThingsService,
     private http: HttpClient,
     public dialog: MatDialog,
     private route: ActivatedRoute,
     private activatedRoute: ActivatedRoute,
+    media: MediaMatcher
   ) {
+    this.mobileQuery = media.matchMedia("(max-width: 981px)");
+    console.log(this.mobileQuery)
     this.activatedRoute.data.subscribe(data => {
       document.title = data.title,
         this.model = 'index_news/info_new/',

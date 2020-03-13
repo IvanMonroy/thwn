@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, AfterViewInit } from '@angular/core';
 import { Gallery, GalleryItem, ImageItem, ThumbnailsPosition, ImageSize } from '@ngx-gallery/core';
 import { Lightbox } from '@ngx-gallery/lightbox';
 import { map, startWith, switchMap } from 'rxjs/operators';
@@ -14,9 +14,9 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
   template:  `
   <h4 style="text-align: center;">{{header}}</h4>
   <div class="row" gallerize >
-  <div class="col-md-4" *ngFor="let img of data">
+  <div class="col-md-4" *ngFor="let img of data" style="margin-bottom: 15px;">
      <div class="card">
-        <img class="card-img-top" src="{{img.srcUrl}}" alt="Card image cap">
+        <img  (click)="ChangeClasses()" class="card-img-top media-object" src="{{img.srcUrl}}" alt="Card image cap"  data-src="holder.js/348x348" style="width: 348px; height: 348px; margin: 0 auto;" data-holder-rendered="true">
         <div class="card-body">
            <h5 class="card-title border-bottom pb-3">{{img.header}} </h5>
            <p class="card-text">{{img.description}}</p>
@@ -45,6 +45,7 @@ export class GalleryImagesComponent implements OnInit {
   value = 50;
   subscription: SubscriptionLike;
   newVehicle: Observable<any[]>;
+  interval: any;
 
   items: GalleryItem[];
 
@@ -87,11 +88,29 @@ export class GalleryImagesComponent implements OnInit {
         imageSize: ImageSize.Cover,
         thumbPosition: ThumbnailsPosition.Top
       });
+
+
+
     }
-  
+    ChangeClasses(){
+     this.interval = setInterval(function(){ 
+        let floorElements = document.getElementsByClassName("g-image-item") as HTMLCollectionOf<HTMLElement>;
+        for (var i = 0; i < floorElements.length; i++) {
+         var a = floorElements[i].style.backgroundImage
+         floorElements[i].style.backgroundImage = ""
+         floorElements[i].style.background = a
+         
+       }
+
+       }, 300);
+
+    }
+
     ngOnDestroy() {
       this.subscription.unsubscribe();
       console.log(this.subscription.closed);
+      clearInterval(this.interval);
+
     }
 
   }
