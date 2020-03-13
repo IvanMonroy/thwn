@@ -30,6 +30,7 @@ export class NewsPathComponent  implements OnInit, OnDestroy {
 
 
   mobileQuery: MediaQueryList;
+  mobileQuery2: MediaQueryList;
   @ViewChild("sidenav", { static: true }) sidenav: MatSidenav;
   title = 'tecni-hidraulicos';
   
@@ -42,6 +43,7 @@ export class NewsPathComponent  implements OnInit, OnDestroy {
     media: MediaMatcher
   ) {
     this.mobileQuery = media.matchMedia("(max-width: 981px)");
+    this.mobileQuery2 = media.matchMedia("(max-width: 520px)");
     console.log(this.mobileQuery)
     this.activatedRoute.data.subscribe(data => {
       document.title = data.title,

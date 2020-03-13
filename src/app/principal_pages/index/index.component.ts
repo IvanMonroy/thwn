@@ -10,12 +10,14 @@ import { MediaMatcher } from '@angular/cdk/layout';
 })
 export class IndexComponent implements OnInit {
   mobileQuery: MediaQueryList;
+  mobileQuery2: MediaQueryList;
   @ViewChild("sidenav", { static: true }) sidenav: MatSidenav;
   title = 'tecni-hidraulicos';
 
   constructor(  public dialog: MatDialog,
     media: MediaMatcher) {
     this.mobileQuery = media.matchMedia("(max-width: 770px)");
+    this.mobileQuery2 = media.matchMedia("(max-width: 520px)");
     console.log(this.mobileQuery)
   }
 
