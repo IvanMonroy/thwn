@@ -5,6 +5,7 @@ import {QueryListsComponent} from './principal_pages/query-lists/query-lists.com
 import { GalleryImagesComponent } from './principal_pages/gallery-images/gallery-images.component';
 import { WorksPathComponent } from './principal_pages/works-path/works-path.component';
 import { NewsPathComponent } from './principal_pages/news-path/news-path.component';
+import { AboutUsComponent } from './principal_pages/about-us/about-us.component';
 
 const routes: Routes = [
 {
@@ -31,7 +32,15 @@ const routes: Routes = [
   path: "news-path/:id",
   component: NewsPathComponent,
   data: { title: "Noticias", items_icon: 'directions_car', model: 'news' }
+},
+{
+  path: "news-index",
+  component: AboutUsComponent,
+  data: { title: "Noticias", items_icon: 'directions_car', model: 'news' }
 }
+
+
+
 
 ];
 

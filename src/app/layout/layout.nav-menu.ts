@@ -49,10 +49,18 @@ export class LayoutNavMenuComponent {
         route: "news-path/2"
       },
       {
+        icon: "people_alt",
+        name: "Acerca de nosotros",
+        route: "news-index"
+      },
+      {
         icon: "remove_red_eye",
         name: "Trazabilidad",
         route: "traceability"
       }
+
+
+      
     ];
   }
   ngOnDestroy(): void {
