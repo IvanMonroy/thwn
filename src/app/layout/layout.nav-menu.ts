@@ -46,17 +46,17 @@ export class LayoutNavMenuComponent {
       {
         icon: "dashboard",
         name: "Noticias",
-        route: "news-path/2"
+        route: "news-index"
       },
       {
         icon: "people_alt",
         name: "Acerca de nosotros",
-        route: "news-index"
+        route: "about-us"
       },
       {
         icon: "remove_red_eye",
         name: "Trazabilidad",
-        route: "traceability"
+        route: "news-insdex"
       }
 
 

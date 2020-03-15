@@ -210,10 +210,8 @@ height: auto; margin-top: 5px;" alt="Card image cap">
     </div>
     </div>
     <div mat-dialog-actions>
-      <button mat-button (click)="onNoClick()">No</button>
-      <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>
-        Confirmar
-      </button>
+      <button mat-button (click)="onNoClick()">Ok</button>
+
     </div>
   `
 })

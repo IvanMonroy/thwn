@@ -6,6 +6,7 @@ import { GalleryImagesComponent } from './principal_pages/gallery-images/gallery
 import { WorksPathComponent } from './principal_pages/works-path/works-path.component';
 import { NewsPathComponent } from './principal_pages/news-path/news-path.component';
 import { AboutUsComponent } from './principal_pages/about-us/about-us.component';
+import { NewsIndexComponent } from './principal_pages/news-index/news-index.component';
 
 const routes: Routes = [
 {
@@ -34,11 +35,15 @@ const routes: Routes = [
   data: { title: "Noticias", items_icon: 'directions_car', model: 'news' }
 },
 {
-  path: "news-index",
+  path: "about-us",
   component: AboutUsComponent,
+  data: { title: "Acerca de nosotros", items_icon: 'directions_car', model: 'news' }
+},
+{
+  path: "news-index",
+  component: NewsIndexComponent,
   data: { title: "Noticias", items_icon: 'directions_car', model: 'news' }
 }
-
 
 
 

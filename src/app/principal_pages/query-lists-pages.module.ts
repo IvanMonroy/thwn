@@ -16,6 +16,7 @@ import { GallerizeModule } from '@ngx-gallery/gallerize';
 import { WorksPathComponent } from './works-path/works-path.component';
 import { NewsPathComponent } from './news-path/news-path.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { NewsIndexComponent } from './news-index/news-index.component';
 
 
 @NgModule({
@@ -24,14 +25,16 @@ import { AboutUsComponent } from './about-us/about-us.component';
     GalleryImagesComponent,
     WorksPathComponent,
     NewsPathComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    NewsIndexComponent
   ],
   exports: [
     QueryListsComponent,
     GalleryImagesComponent,
     WorksPathComponent,
     NewsPathComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    NewsIndexComponent
   ],
   entryComponents:  [
   ],

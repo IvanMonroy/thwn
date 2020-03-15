@@ -1,0 +1,60 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 jasgrid">
+            <div class="box-item"  *ngFor="let new of news" [routerLink]="['/news-path/'+ new.id]">
+                <div class="box-post">
+                    <span class="label label-success">
+                        <a [routerLink]="['/news-path/'+ new.id]" rel="tag">Noticia</a>
+                    </span>
+                    <h1 class="post-title">
+                        <a [routerLink]="['/news-path/'+ new.id]">
+                            {{new.title}}
+                        </a>
+                    </h1>
+                    <span class="meta">
+
+                        <span><i class="glyphicon glyphicon-time"></i> Mar 16, 2020</span>
+                    </span>
+                </div>
+                <img class=" media-object"  [routerLink]="['/news-path/'+ new.id]" [src]="new.img_url_one"  onError="this.src='https://media.istockphoto.com/vectors/cartoon-funny-cat-on-page-404-vector-flat-illustration-the-character-vector-id993443850?k=6&m=993443850&s=170667a&w=0&h=vUe-b3pWMRbYq1AV_GNzgmok7VLYuZ8T0jKkcoLmTM8='"  data-src="holder.js/570x342" style="width: 570px; height: 342px;" data-holder-rendered="true">
+            </div>
+        </div>
+
+
+
+
+        <div class="col-md-6 jasgrid">
+            <div class="box-item"  *ngFor="let new2 of news2" [routerLink]="['/news-path/'+ new2.id]">
+                <div class="box-post">
+                    <span class="label label-success">
+                        <a [routerLink]="['/news-path/'+ new2.id]" rel="tag">Noticia</a>
+                    </span>
+                    <h1 class="post-title">
+                        <a [routerLink]="['/news-path/'+ new2.id]">
+                            {{new2.title}}
+                        </a>
+                    </h1>
+                    <span class="meta">
+
+                        <span><i class="glyphicon glyphicon-time"></i> Mar 16, 2020</span>
+                    </span>
+                </div>
+                <img class=" media-object"  [routerLink]="['/news-path/'+ new2.id]" [src]="new2.img_url_one"  onError="this.src='https://media.istockphoto.com/vectors/cartoon-funny-cat-on-page-404-vector-flat-illustration-the-character-vector-id993443850?k=6&m=993443850&s=170667a&w=0&h=vUe-b3pWMRbYq1AV_GNzgmok7VLYuZ8T0jKkcoLmTM8='"  data-src="holder.js/570x342" style="width: 570px; height: 342px;" data-holder-rendered="true">
+            </div>
+
+
+
+
+        </div>
+
+
+    </div>
+
+</div> <!-- /container -->
