@@ -17,7 +17,8 @@ import { WorksPathComponent } from './works-path/works-path.component';
 import { NewsPathComponent } from './news-path/news-path.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { NewsIndexComponent } from './news-index/news-index.component';
-import { FindUsComponent } from './find-us/find-us.component';
+import { FindUsComponent, PizzaPartyComponent } from './find-us/find-us.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { FindUsComponent } from './find-us/find-us.component';
     NewsPathComponent,
     AboutUsComponent,
     NewsIndexComponent,
-    FindUsComponent
+    FindUsComponent,
+    PizzaPartyComponent
     ],
   exports: [
     QueryListsComponent,
@@ -37,9 +39,11 @@ import { FindUsComponent } from './find-us/find-us.component';
     NewsPathComponent,
     AboutUsComponent,
     NewsIndexComponent,
-    FindUsComponent
+    FindUsComponent,
+    PizzaPartyComponent
   ],
   entryComponents:  [
+    PizzaPartyComponent
   ],
   imports: [
     CommonModule,
@@ -47,7 +51,7 @@ import { FindUsComponent } from './find-us/find-us.component';
     MatIconModule,
     MatTabsModule,
     RouterModule,
-    MatFormFieldModule,FormsModule, ReactiveFormsModule,MatInputModule,
+    MatFormFieldModule,FormsModule, ReactiveFormsModule,MatInputModule,MatSnackBarModule,
     GalleryModule,
     LightboxModule,
     GallerizeModule,

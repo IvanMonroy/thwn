@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Observable, SubscriptionLike } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { GlobalThingsService } from 'src/app/services/global/global-things.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar, MAT_SNACK_BAR_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-find-us',
@@ -22,7 +22,8 @@ export class FindUsComponent implements OnInit {
     public formBuilder: FormBuilder,
     private http: HttpClient,
     public globalThingsService: GlobalThingsService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private _snackBar: MatSnackBar
   ) {
 
     this.form = this.formBuilder.group({
@@ -50,16 +51,46 @@ export class FindUsComponent implements OnInit {
         formData.append("mesagge", this.form.get('mesagge').value);
         formData.append("is_subscriber", this.form.get('is_subscriber').value);
         this.postData( formData)
+        
   }
 
+  openSnackBar(message: any[]) {
+    this._snackBar.openFromComponent(PizzaPartyComponent, {
+      duration: 5000,
+      data: message
+      
+    });
+  }
 
   postData(data){
-    this.http.post('https://willreyn-api.herokuapp.com/api/subscribers', data).subscribe(data => {
+  
+    this.http.post('https://willreyn-api.herokuapp.com/api/subscribers', data).subscribe((data: any[]) => {
       console.log(data['message']);
+      this.openSnackBar(data)
     }, err => {
       console.log(err['error'].errors)
       console.log(err);
+      this.openSnackBar(data['message'])
     })
   }
+
+}
+
+
+@Component({
+  selector: 'snack-bar-component-example-snack',
+  template: `
+  <span class="example-pizza-party" style="color: #285dbf;">
+  {{message}}!!! 🔨
+  </span>
+
+  `,
+})
+export class PizzaPartyComponent {
+  message: any;
+  constructor(@Inject(MAT_SNACK_BAR_DATA) public data: any) {
+    console.log(data)
+    this.message =  data['message'] + " " + data['data'].name
+   }
 
 }

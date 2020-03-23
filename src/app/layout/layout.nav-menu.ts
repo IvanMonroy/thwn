@@ -54,6 +54,11 @@ export class LayoutNavMenuComponent {
         route: "about-us"
       },
       {
+        icon: "map",
+        name: "Encuéntranos",
+        route: "find-us"
+      },
+      {
         icon: "remove_red_eye",
         name: "Trazabilidad",
         route: "news-insdex"

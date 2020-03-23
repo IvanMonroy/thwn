@@ -86,5 +86,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   height: 100%;
   overflow: hidden !important;
 }
-
+.mat-form-field {
+  margin-right: 8px;
+}
+.mat-snack-bar-container{
+  background-color: white !important;
+}
 @import "~bootstrap/dist/css/bootstrap.css";
