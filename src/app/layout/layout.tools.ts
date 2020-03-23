@@ -62,12 +62,12 @@ import { ActivatedRoute } from '@angular/router';
 export class LayoutToolsComponent {
   @Input() medyaQueryParent: MediaQueryList;
   @Input() varl: string = "mat-menu-item";
-  constructor(private _bottomSheet: MatBottomSheet, public dialog: MatDialog) {}
+  constructor(private _bottomSheet: MatBottomSheet, public dialog: MatDialog) { }
 
   animal: string;
   name: string = 'Confirmación';
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   openBottomSheet(): void {
     this._bottomSheet.open(BottomSheetOverviewExampleSheet);
@@ -76,7 +76,7 @@ export class LayoutToolsComponent {
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
       width: '100%',
-      data: {name: this.name, animal: this.animal}
+      data: { name: this.name, animal: this.animal }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -121,7 +121,7 @@ export class BottomSheetOverviewExampleSheet implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private _bottomSheetRef: MatBottomSheetRef<BottomSheetOverviewExampleSheet>
   ) {
-    this.subscription =  this.globalService.GetAllModel(this.model).subscribe((data: any[]) => {
+    this.subscription = this.globalService.GetAllModel(this.model).subscribe((data: any[]) => {
       console.log(data);
       this.news = data['data'];
     })
@@ -130,8 +130,8 @@ export class BottomSheetOverviewExampleSheet implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-   
-console.log( this.news)
+
+    console.log(this.news)
   }
 
   ngOnDestroy() {
@@ -219,7 +219,7 @@ export class DialogOverviewExampleDialog {
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
-  ) {}
+  ) { }
 
   onNoClick(): void {
     this.dialogRef.close();

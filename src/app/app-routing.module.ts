@@ -7,6 +7,7 @@ import { WorksPathComponent } from './principal_pages/works-path/works-path.comp
 import { NewsPathComponent } from './principal_pages/news-path/news-path.component';
 import { AboutUsComponent } from './principal_pages/about-us/about-us.component';
 import { NewsIndexComponent } from './principal_pages/news-index/news-index.component';
+import { FindUsComponent } from './principal_pages/find-us/find-us.component';
 
 const routes: Routes = [
 {
@@ -43,8 +44,12 @@ const routes: Routes = [
   path: "news-index",
   component: NewsIndexComponent,
   data: { title: "Noticias", items_icon: 'directions_car', model: 'news' }
+},
+{
+  path: "find-us",
+  component: FindUsComponent,
+  data: { title: "Encuéntranos", items_icon: 'directions_car', model: 'news' }
 }
-
 
 
 ];

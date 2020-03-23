@@ -17,6 +17,7 @@ import { WorksPathComponent } from './works-path/works-path.component';
 import { NewsPathComponent } from './news-path/news-path.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { NewsIndexComponent } from './news-index/news-index.component';
+import { FindUsComponent } from './find-us/find-us.component';
 
 
 @NgModule({
@@ -26,15 +27,17 @@ import { NewsIndexComponent } from './news-index/news-index.component';
     WorksPathComponent,
     NewsPathComponent,
     AboutUsComponent,
-    NewsIndexComponent
-  ],
+    NewsIndexComponent,
+    FindUsComponent
+    ],
   exports: [
     QueryListsComponent,
     GalleryImagesComponent,
     WorksPathComponent,
     NewsPathComponent,
     AboutUsComponent,
-    NewsIndexComponent
+    NewsIndexComponent,
+    FindUsComponent
   ],
   entryComponents:  [
   ],

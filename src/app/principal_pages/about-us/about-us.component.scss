@@ -16,7 +16,7 @@ body {
     color: #000;
 }
 .aboutus-title::after {
-    background: #BF282F none repeat scroll 0 0;
+    background: #285dbf none repeat scroll 0 0;
     bottom: 0;
     content: "";
     height: 2px;
@@ -32,14 +32,14 @@ body {
 }
 
 a:hover, a:active {
-    color: #BF282F;
+    color: #285dbf;
     text-decoration: none;
     outline: 0;
 }
 .aboutus-more {
-    border: 1px solid #BF282F;
+    border: 1px solid #285dbf;
     border-radius: 25px;
-    color: #BF282F;
+    color: #285dbf;
     display: inline-block;
     font-size: 14px;
     font-weight: 700;
@@ -54,7 +54,7 @@ a:hover, a:active {
     width: 18%;
 }
 .feature .feature-box .iconset::after {
-    background: #BF282F none repeat scroll 0 0;
+    background: #285dbf none repeat scroll 0 0;
     content: "";
     height: 150%;
     left: 43%;
@@ -90,12 +90,12 @@ a:hover, a:active {
     line-height: 22px;
 }
 .icon {
-    color : #BF282F;
+    color : #285dbf;
     padding:0px;
     font-size:40px;
-    border: 1px solid #BF282F;
+    border: 1px solid #285dbf;
     border-radius: 100px;
-    color: #BF282F;
+    color: #285dbf;
     font-size: 28px;
     height: 70px;
     line-height: 65px;
