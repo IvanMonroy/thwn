@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Observable, SubscriptionLike } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -18,6 +18,13 @@ export class FindUsComponent implements OnInit {
   rates: Observable<any[]>;
   dataRates: Observable<any[]>;
   subscription: SubscriptionLike[] = [];
+
+  @ViewChild("inputFile1", { static: true }) name: ElementRef;
+  @ViewChild("inputFile2", { static: true }) subject: ElementRef;
+  @ViewChild("inputFile3", { static: true }) email: ElementRef;
+  @ViewChild("inputFile4", { static: true }) phone: ElementRef;
+  @ViewChild("inputFile5", { static: true }) message: ElementRef;
+
   constructor(
     public formBuilder: FormBuilder,
     private http: HttpClient,
@@ -66,7 +73,12 @@ export class FindUsComponent implements OnInit {
   
     this.http.post('https://willreyn-api.herokuapp.com/api/subscribers', data).subscribe((data: any[]) => {
       console.log(data['message']);
-      this.openSnackBar(data)
+      this.openSnackBar(data);
+      this.name.nativeElement.value = '';
+      this.subject.nativeElement.value = '';
+      this.email.nativeElement.value = '';
+      this.phone.nativeElement.value = '';
+      this.message.nativeElement.value = '';
     }, err => {
       console.log(err['error'].errors)
       console.log(err);

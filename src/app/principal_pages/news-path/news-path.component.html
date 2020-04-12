@@ -48,12 +48,14 @@
         <div class="well">
           <h2>¡Suscríbase!</h2>
           <p>Subscríbase y reciba todas nuestras noticias y promociones (Proximamente)</p>
+          <form [formGroup]="form">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Ingrese su email...">
+            <input type="text" class="form-control" formControlName="email" placeholder="Ingrese su email..." #inputFile>
             <span class="input-group-btn">
-              <button class="btn btn-default" type="button">Suscribir!</button>
+              <button class="btn btn-default" (click)="submitForm()" type="submit">Suscribir!</button>
             </span>
           </div>
+        </form>
         </div>
         <div class="well">
           <h2>Compartir (Próximamente)</h2>
