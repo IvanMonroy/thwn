@@ -71,5 +71,38 @@ export class QueryListsComponent implements OnInit, OnDestroy {
     console.log(this.subscription.closed);
   }
 
+  setToLocalStorage(price: any,mark: any,description: any,available: any,name: any ){
+    var array =  {
+      "price": price,
+      "mark": mark,
+      "description": description,
+      "available": available,
+      "name": name,
+    }
+    localStorage.setItem(name, JSON.stringify(array));
+  }
+  findFirst(filter: any){
+    (<HTMLInputElement>document.getElementById("filter")).value = filter;
+    document.getElementById("filter").focus();
+
+    this.data = this.globalService.GetAllModel(this.model)
+    console.log(this.data);
+    this.filter = new FormControl('');
+    this.filter$ = this.filter.valueChanges.pipe(startWith(filter));
+    this.dataFiltered = combineLatest(this.data, this.filter$).pipe(
+      map(([datas, filterString]) => datas['data']
+        .filter(data => data.name.toLowerCase().indexOf(filterString.toLowerCase()) !== -1
+        ))
+    )
+    this.subscription = this.data.subscribe()
+    setTimeout(function(filter1: any){this.focusFirst(filter1)}, 5000)
+
+  }
+  focusFirst(filter: any){
+    debugger
+    (<HTMLInputElement>document.getElementById("filter")).value = filter;
+    document.getElementById("filter").focus();
+  }
+
 
 }

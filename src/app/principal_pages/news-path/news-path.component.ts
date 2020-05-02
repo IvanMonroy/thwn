@@ -7,6 +7,8 @@ import { MatDialog, MatSidenav, MatSnackBar } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { PizzaPartyComponent } from '../find-us/find-us.component';
+import {MatButtonModule} from '@angular/material/button';
+import { TermsConditionDialogComponent } from 'src/app/layout/layout.tools';
 
 @Component({
   selector: 'app-news-path',
@@ -59,7 +61,8 @@ export class NewsPathComponent  implements OnInit, OnDestroy {
 
 
       this.form = this.formBuilder.group({
-        email: ['']
+        email: [''],
+        is_subscriber: [false]
       });
  }
 
@@ -74,7 +77,17 @@ export class NewsPathComponent  implements OnInit, OnDestroy {
   submitForm() {
     var formData: any = new FormData();
         formData.append("email", this.form.get('email').value);
-        this.postData( formData)      
+        formData.append("is_subscriber", this.form.get('is_subscriber').value);
+        if(this.form.get('is_subscriber').value != true){
+          var message = [];
+           message["message"] = "Debe haceptar terminos y condiciones";
+           message["data"] = ".";
+          this.openSnackBar(message)
+        }
+        else{
+          this.postData( formData)  
+          
+        }   
   }
 
   postData(data){
@@ -97,6 +110,19 @@ export class NewsPathComponent  implements OnInit, OnDestroy {
       
     });
   }
+
+
+  
+  openDialog(): void {
+    const dialogRef = this.dialog.open(TermsConditionDialogComponent, {
+      width: '100%',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
 
   ngOnDestroy() {
     this.subscription.unsubscribe();

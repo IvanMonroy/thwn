@@ -5,7 +5,8 @@ import { LayoutHeaderComponent } from "./layout.header";
 import {
   LayoutToolsComponent,
   BottomSheetOverviewExampleSheet,
-  DialogOverviewExampleDialog
+  DialogOverviewExampleDialog,
+  TermsConditionDialogComponent
 } from "./layout.tools";
 
 import { AppRoutingModule } from "../app-routing.module";
@@ -28,17 +29,20 @@ import {MatExpansionModule} from '@angular/material/expansion';
     LayoutHeaderComponent,
     LayoutToolsComponent,
     BottomSheetOverviewExampleSheet,
-    DialogOverviewExampleDialog
+    DialogOverviewExampleDialog,
+    TermsConditionDialogComponent
   ],
   exports: [
     LayoutNavMenuComponent,
     LayoutHeaderComponent,
     BottomSheetOverviewExampleSheet,
-    DialogOverviewExampleDialog
+    DialogOverviewExampleDialog,
+    TermsConditionDialogComponent
   ],
   entryComponents: [
     BottomSheetOverviewExampleSheet,
-    DialogOverviewExampleDialog
+    DialogOverviewExampleDialog,
+    TermsConditionDialogComponent
   ],
   imports: [
     CommonModule,

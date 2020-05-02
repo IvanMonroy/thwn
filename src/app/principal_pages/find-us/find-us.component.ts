@@ -93,7 +93,7 @@ export class FindUsComponent implements OnInit {
   selector: 'snack-bar-component-example-snack',
   template: `
   <span class="example-pizza-party" style="color: #285dbf;">
-  {{message}}!!! 🔨
+  {{message}}!!! 
   </span>
 
   `,
@@ -101,8 +101,7 @@ export class FindUsComponent implements OnInit {
 export class PizzaPartyComponent {
   message: any;
   constructor(@Inject(MAT_SNACK_BAR_DATA) public data: any) {
-    console.log(data)
-    this.message =  data['message'] + " " + data['data'].name
+    this.message =  data['message'] + " " + (data['data'].name != null ?  data['data'].name + "🔨🎉🎈" : "😔⚠️")
    }
 
 }

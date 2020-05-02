@@ -1,8 +1,9 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-<section class="banner-section" [style.background-image]="'url('+data.img_url_one+')'" [class.is-mobile-new]="mobileQuery.matches" [class.is-mobile-new-2]="mobileQuery2.matches" style="background-size:cover; height: 380px; left: 0; position: absolute; top: 0; background-position:0;">
+<section class="banner-section" [style.background-image]="'url('+data.img_url_one+')'"
+  [class.is-mobile-new]="mobileQuery.matches" [class.is-mobile-new-2]="mobileQuery2.matches"
+  style="background-size:cover; height: 380px; left: 0; position: absolute; top: 0; background-position:0;">
 </section>
 <section class="post-content-section">
   <div class="container">
@@ -17,20 +18,22 @@
         </ul>
       </div>
       <div class="col-lg-9 col-md-9 col-sm-12">
-        <p class="lead"style="margin-top: 25px;">Queremos que sepas lo importante que eres para nosotros, te invitamos para que leas esta y muchas mas noticias de descuentos y promociones que tenemos para tí.</p>
+        <p class="lead" style="margin-top: 25px;">Queremos que sepas lo importante que eres para nosotros, te invitamos
+          para que leas esta y muchas mas noticias de descuentos y promociones que tenemos para tí.</p>
 
         <p>{{data.bodyone}} </p>
         <blockquote>
           <p>{{data.note_1}}.</p>
           <footer>Administrador del sitio <cite title="Source Title">JB</cite></footer>
         </blockquote>
-        <p class="lead"style="margin-top: 25px;">{{data.subtitle}}</p>
+        <p class="lead" style="margin-top: 25px;">{{data.subtitle}}</p>
         <p>{{data.bodytwho}}</p>
 
         <div class="image-block">
-          <img [src]="data.img_url_two "  onError="this.src='../../../assets/images/item-not-found.png'" class="img-responsive">
+          <img [src]="data.img_url_two " onError="this.src='../../../assets/images/item-not-found.png'"
+            class="img-responsive">
         </div>
-        <p class="lead"style="margin-top: 25px;">{{data.subtitletwo}}</p>
+        <p class="lead" style="margin-top: 25px;">{{data.subtitletwo}}</p>
         <p>{{data.bodythree}}</p>
         <blockquote>
           <p>{{data.note_2}}</p>
@@ -38,7 +41,8 @@
         </blockquote>
 
         <div class="image-block">
-          <img [src]="data.img_url_three "  onError="this.src='../../../assets/images/item-not-found.png'" class="img-responsive">
+          <img [src]="data.img_url_three " onError="this.src='../../../assets/images/item-not-found.png'"
+            class="img-responsive">
         </div>
 
         <p>Gracias por leernos, enteraté de más noticias en aquí.</p>
@@ -49,13 +53,16 @@
           <h2>¡Suscríbase!</h2>
           <p>Subscríbase y reciba todas nuestras noticias y promociones (Proximamente)</p>
           <form [formGroup]="form">
-          <div class="input-group">
-            <input type="text" class="form-control" formControlName="email" placeholder="Ingrese su email..." #inputFile>
-            <span class="input-group-btn">
-              <button class="btn btn-default" (click)="submitForm()" type="submit">Suscribir!</button>
-            </span>
-          </div>
-        </form>
+            <mat-form-field appearance="fill">
+              <mat-label>Ingrese su email</mat-label>
+              <input matInput formControlName="email" placeholder="email" #inputFile>
+            </mat-form-field>
+            <mat-checkbox formControlName="is_subscriber" #inputFile> <a  (click)="openDialog()">Aceptar terminos y condiciones.</a></mat-checkbox>
+            <div class="example-button-row">
+              <button mat-stroked-button color="primary" (click)="submitForm()" type="submit">Subscríbase</button>
+            </div>
+
+          </form>
         </div>
         <div class="well">
           <h2>Compartir (Próximamente)</h2>
@@ -73,22 +80,23 @@
           <p>{{data.autor}}</p>
         </div>
         <div class="list-group">
-          <a *ngFor="let data2 of header" class="list-group-item active" style="cursor: pointer;" href="/news-path/{{data2.id}}" >
+          <a *ngFor="let data2 of header" class="list-group-item active" style="cursor: pointer;"
+            href="/news-path/{{data2.id}}">
             <h4 class="list-group-item-heading">{{data2.autor}}</h4>
             <p class="list-group-item-text">{{data2.note_2}}</p>
           </a>
-         </div>
+        </div>
         <div class="well">
-          <div class="media" *ngFor="let data3 of header" >
-            <div class="media-left"> <a href="/news-path/{{data3.id}}" > <img data-src="holder.js/64x64" class="media-object" alt="64x64"
-                  style="width: 64px; height: 64px;"
-                  [src]="data3.img_url_one"
+          <div class="media" *ngFor="let data3 of header">
+            <div class="media-left"> <a href="/news-path/{{data3.id}}"> <img data-src="holder.js/64x64"
+                  class="media-object" alt="64x64" style="width: 64px; height: 64px;" [src]="data3.img_url_one"
                   data-holder-rendered="true"> </a> </div>
             <div class="media-body">
-              <h4 class="media-heading" style="cursor: pointer;"><a href="/news-path/{{data3.id}}"> {{data3.title}} </a> </h4> Lea la noticia completa en el enlace.
+              <h4 class="media-heading" style="cursor: pointer;"><a href="/news-path/{{data3.id}}"> {{data3.title}} </a>
+              </h4> Lea la noticia completa en el enlace.
             </div>
           </div>
-         
+
         </div>
       </div>
     </div>

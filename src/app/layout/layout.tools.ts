@@ -225,3 +225,130 @@ export class DialogOverviewExampleDialog {
     this.dialogRef.close();
   }
 }
+
+
+
+
+
+@Component({
+  selector: "terms-condition-dialog",
+  styleUrls: ['./layout.tools.scss'],
+  template: `
+  <div mat-dialog-content>
+  <div class="container" style="width: 100%;">
+  <p  style="margin-top: 25px;"><strong>Tratamiento de Datos</strong></p>
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <p  style="margin-top: 25px;">
+      Tecnihidráulicos JB – informa al titular de la información y este así lo acepta de manera expresa y voluntaria que
+      los datos consignados a Tecnihidráulicos JB, sean recopilados, almacenados para los usos que a continuación se
+      enuncian:
+
+      Recabar o recolectar los datos personales e incorporarlos y almacenarlos en nuestra base de datos.
+      Ordenar, catalogar, clasificar, dividir o separar la información suministrada.
+      Utilizar los datos suministrados en campañas de comunicación, divulgación y promoción u oferta de productos,
+      actividades o servicios desarrollados como parte de estrategias internas de la compañía.
+      Utilizarlos para fines administrativos internos o comerciales tales como: estudios de crédito, elaboración y
+      presentación de cotizaciones, referencias comerciales de experiencia, investigación de mercados, análisis
+      estadísticos, realización de encuestas sobre satisfacción, ofrecimiento o reconocimiento de beneficios propios de
+      nuestro programa de lealtad y servicio postventa.
+      Conservar registros históricos de la compañía y mantener contacto con los titulares del dato.
+      Verificar, comprobar o validar los datos suministrados.
+      Estudiar y analizar la información entregada para el seguimiento y mejoramiento de los productos, el servicio y la
+      atención.
+      Entregar la información recolectada a terceros con los que la compañía contrate el almacenamiento y administración
+      de los datos personales, bajo los estándares de seguridad y confidencialidad a los cuales estamos obligados.
+      Transferir los datos personales a cualquier país o servidor en otro país.
+      Comunicar y permitir el acceso a los datos personales suministrados a terceros proveedores de servicios de apoyo
+      general y a las personas naturales o jurídicas accionistas de Tecnihidráulicos JB
+      Registro como contratista, proveedor o cliente.
+      Control y prevención del fraudes.
+      Control y prevención de lavado de activos y financiación del terrorismo.
+      Celebración, ejecución y gestión de las propuestas de negocios y contratos objeto de los servicios prestado.
+      Reportes a centrales de riesgo por incumplimiento de las obligaciones financieras derivadas de la relación
+      comercial.
+      La información aportada por el Titular no será utilizada para actividades ilegales, además será maneja con las
+      medidas técnicas, humanas y administrativas que sean necesarias para garantizar al Titular que la información no
+      será adulterada, perdida, consultada sin permiso o en uso fraudulento.
+    </p>
+  </div>
+</div>
+<div class="container"  style="width: 100%;">
+  <p  style="margin-top: 25px;"><strong>Derechos del Titular</strong></p>
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <p style="margin-top: 25px;">
+      El titular de los datos tiene derecho a:<br>
+
+      • Conocer, actualizar y rectificar sus datos personales recolectados por Tecnihidráulicos JB -, este
+      derecho se puede ejercer entre otros frente a datos parciales, inexactos, incompletos, fraccionados o que induzcan
+      al error.
+      Solicitar prueba de la autorización otorgada a Tecnihidráulicos JB –<br>
+      • Ser informado por Tecnihidráulicos JB -, previa solicitud, respecto del uso que le han dado a los datos del
+      titular.<br>
+      • Revocar en cualquier tiempo la autorización y/o supresión del dato.<br>
+      • Acceder en forma gratuita a los datos del titular contenidos en la base de datos de Tecnihidráulicos JB –<br>
+    </p>
+  </div>
+</div>
+<div class="container"  style="width: 100%;">
+  <p style="margin-top: 25px;"><strong>Departamento responsable de la atención de las peticiones, consultas y
+    reclamos</strong></p>
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <p style="margin-top: 25px;">
+      Para que el titular de la información pueda ejercer sus derechos de acuerdo con la ley 1266 de 2008, 1581 de 2012,
+      decreto 1377 de 2013, decreto 1074 de 2015 y demás normas concordantes Tecnihidráulicos JB – Soluciones Web –
+      ha destinado el departamento de Servicio al Cliente con el fin de atender las solicitudes de los titulares,
+      tal y como se presenta a continuación:
+    </p>
+  </div>
+</div>
+<div class="container"  style="width: 100%;">
+  <p style="margin-top: 25px;" > <strong>Procedimiento para ejercer lo derechos </strong></p>
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <p style="margin-top: 25px;">
+        Atención electrónica:<br> El Titular del dato podrá realizar su requerimiento formal a la dirección electrónica
+        tecnihidraulicosjb@gmail.com previo agotamiento de los requisitos de legitimación para el ejercicio del titular,
+        a saber.
+        <br>
+        • Ser titular de la información, acreditar la identidad en forma suficiente mediante el medio que
+        Tecnihidráulicos JB defina para tal fin.<br>
+        • Por los causahabientes, quienes deberán acreditar tal calidad.<br>
+        • Por el representante/apoderado del titular de la información, quien también deberá acreditar tal calidad.<br>
+        • Por estipulación a favor de otro o por otro ejercerán por conjunto de las personas que estén facultadas para
+        representarlos, e igualmente se deberá acreditar tal calidad.<br>
+        •Los derechos de los menores de edad se ejercerán por las personas encargadas de su representación, e igualmente
+        se deberá acreditar tal calidad.<br>
+        <br>
+        Atención escrita:<br> El Titular del dato deberá realizar su requerimiento formal a la dirección:<br>
+        Carrera 28a #66 - 73 Bogotá D.C. Colombia, previo agotamiento de los requisitos de legitimación para
+        el ejercicio del titular, según lo descrito en el literal a del presente numeral, mediante escrito donde
+        se especifique la dirección donde recibirá notificaciones y respuestas.
+      </p>
+    </div>
+    </div>
+
+
+
+    <div class="container"  style="width: 100%;">
+      <p  style="margin-top: 25px;"><strong> Entrada en vigencia y duración </strong></p>
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <p  style="margin-top: 25px;">
+            La presente política de manejo de datos de Tecnihidráulicos JB - entra a partir de
+            la fecha de su firma 11 de Octubre de 2016, y tendrá una vigencia indefinida o hasta cuando
+            haya cambios sustanciales, los cuales serán informados a los titulares de la información según los términos
+            de la ley.
+          </p>
+        </div>
+    </div>
+    </div>
+  `
+})
+export class TermsConditionDialogComponent {
+  constructor(
+    public dialogRef: MatDialogRef<TermsConditionDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData
+  ) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+}

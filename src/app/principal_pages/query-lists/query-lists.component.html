@@ -10,7 +10,7 @@
     <div class="container-fluid">
       <mat-form-field appearance="legacy">
           <mat-label class="span_color_black">Busca tu producto aquí</mat-label>
-          <input matInput [name]="filter" [formControl]="filter" placeholder="Llantas" autocomplete="off"
+          <input matInput id="filter" [name]="filter" [formControl]="filter" placeholder="Llantas" autocomplete="off"
               data-toggle="tooltip" data-placement="right" title="El formulario es sensible a máyusculas y mínusculas.">
       </mat-form-field>
   </div>
@@ -25,8 +25,8 @@
                             <img class="pic-2 media-object" src="../../../assets/images/no-found.png " data-src="holder.js/348x348" style="width: 348px; height: 348px;" data-holder-rendered="true">
                         </a>
                         <ul class="social">
-                            <li><a href="" class="fa fa-search"></a></li>
-                            <li><a href="" class="fa fa-shopping-bag"></a></li>
+                            <li><a class="fa fa-search"(click)="findFirst(product.name);" ></a></li>
+                            <li><a class="fa fa-shopping-bag" (click)="setToLocalStorage(product.price, product.mark, product.description,product.available,product.name )"></a></li>
                             <li><a href="" class="fa fa-shopping-cart"></a></li>
                         </ul>
                         <span class="product-discount-label">{{product.available == 'true' ? 'Disponibles' : 'Agotados'}}</span>

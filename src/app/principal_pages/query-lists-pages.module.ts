@@ -19,7 +19,10 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { NewsIndexComponent } from './news-index/news-index.component';
 import { FindUsComponent, PizzaPartyComponent } from './find-us/find-us.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import {MatRadioModule} from '@angular/material/radio';
 
+import {MatSelectModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     AboutUsComponent,
     NewsIndexComponent,
     FindUsComponent,
-    PizzaPartyComponent
+    PizzaPartyComponent,
     ],
   exports: [
     QueryListsComponent,
@@ -51,7 +54,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatIconModule,
     MatTabsModule,
     RouterModule,
-    MatFormFieldModule,FormsModule, ReactiveFormsModule,MatInputModule,MatSnackBarModule,
+    MatFormFieldModule,FormsModule, ReactiveFormsModule,
+    MatInputModule,MatSnackBarModule,MatCheckboxModule,MatRadioModule,MatSelectModule,MatButtonModule,
     GalleryModule,
     LightboxModule,
     GallerizeModule,
