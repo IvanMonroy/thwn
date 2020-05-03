@@ -114,6 +114,25 @@ export class QueryListsComponent implements OnInit, OnDestroy {
     });
   }
 
+
+  openShippingCart(price: any,mark: any,description: any,available: any,name: any, imgurl: any, id: any): void {
+    const dialogRef = this.dialog.open(ShippingCartDialogComponent, {
+      width: '100%',
+      data: {
+        "price": price,
+        "mark": mark,
+        "description": description,
+        "available": available,
+        "name": name,
+        "imgurl": imgurl,
+        "id": id
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+
 }
 
 
@@ -235,6 +254,147 @@ export class DetailsDialogComponent {
     message["data"] = ".";
    this.openSnackBar(message)
   }
+
+}
+
+
+
+@Component({
+  selector: "shipping-cart-dialog",
+  styleUrls: ['./shipping-cart.component.scss'],
+  template: `
+  <div mat-dialog-content style="height: 400px">
+  <mat-toolbar color="primary" style="width:100%">
+  <mat-toolbar-row>
+  <span>Carrito de compra</span>
+  <span class="example-spacer"></span>
+  <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">shopping_cart</mat-icon>
+</mat-toolbar-row>
+
+</mat-toolbar>
+  <div class="container">
+   <div class="card shopping-cart">
+
+            <div class="card-body">
+                    <!-- PRODUCT -->
+                    <div class="row" style="margin-top: 10px" *ngFor="let product of dataTotal">
+                        <div class="col-12 col-sm-12 col-md-2 text-center">
+                        <img width="120px" height="80px" onError="this.src='../../../assets/images/item-not-found.png'"
+                        data-src="holder.js/120x80" style="width: 120px; height: 80px; max-width: 100%;"
+                        data-holder-rendered="true" src="{{product.imgurl}}" class="img-responsive">
+
+                               
+                        </div>
+                        <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
+                            <h4 class="product-name"><strong>{{ product.name }}</strong></h4>
+                            <h4>
+                                <small>{{product.name + " " + product.mark}}</small>
+                            </h4>
+                        </div>
+                        <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
+                            <div class="col-4 col-sm-4 col-md-4 col-md-6 text-md-right" style="padding-top: 5px">
+                                <h6><strong>{{product.price}} <span class="text-muted">$</span></strong></h6>
+                            </div>
+                            <div class="col-3 col-sm-3 col-md-3">
+                            </div>
+
+                            <div class="col-2 col-sm-2 col-md-2 text-right">
+                              
+                          <div class="example-flex-container">
+                            <div class="example-button-container">
+                              <button mat-mini-fab color="primary"
+                                (click)="removeToLocalStorage(product.name)"
+                                aria-label="Remover del carrito" title="Remover del carrito">
+                                <mat-icon>remove_shopping_cart</mat-icon>
+                              </button>
+                            </div>
+                          </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <!-- END PRODUCT -->
+                <div class="pull-right">
+                    <a href="" class="btn btn-outline-secondary pull-right">
+                        Seguir comprando
+                    </a>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="coupon col-md-5 col-sm-5 no-padding-left pull-left">
+                    <div class="row">
+                    </div>
+                </div>
+                <div class="pull-right" style="margin: 10px">
+                    <a href="" class="btn btn-success pull-right">Checkout</a>
+                    <div class="pull-right" style="margin: 5px">
+                        Total price: <b id="totalPrice">50.00€</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+  `
+})
+
+
+export class ShippingCartDialogComponent {
+  dataExt: any;
+  dataTotal = [];
+  totalPrice: any;
+  constructor(
+    public dialogRef: MatDialogRef<ShippingCartDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    private _snackBar: MatSnackBar
+  ) {
+    
+    for(var i=0, len=localStorage.length; i<len; i++) {
+      var key = localStorage.key(i);
+      var value = localStorage[key];
+      this.dataTotal.push(JSON.parse(localStorage[key]))
+      console.log(key + " => " + value);
+      this.totalPrice = JSON.parse(localStorage[key]).price ;
+      (<HTMLInputElement>document.getElementById("totalPrice")).innerText = this.totalPrice;
+  }
+
+    this.dataExt = data;
+    console.log(this.dataTotal)
+   }
+    
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  removeToLocalStorage(key: any ){
+   
+    localStorage.removeItem(key);
+    var message = [];
+    message["message"] = "Producto eliminado del carrito 🛍️🎊";
+    message["data"] = ".";
+   this.openSnackBar(message)
+
+   this.dataTotal = [];
+   for(var i=0, len=localStorage.length; i<len; i++) {
+    var key1 = localStorage.key(i);
+    var value = localStorage[key1];
+    this.dataTotal.push(JSON.parse(localStorage[key1]))
+    console.log(key1 + " => " + value);
+    this.totalPrice = JSON.parse(localStorage[key1]).price ;
+}
+(<HTMLInputElement>document.getElementById("totalPrice")).innerText = this.totalPrice
+  }
+
+
+
+  openSnackBar(message: any[]) {
+    this._snackBar.openFromComponent(PizzaPartyComponent, {
+      duration: 6000,
+      data: message
+      
+    });
+  }
+
 
 }
 

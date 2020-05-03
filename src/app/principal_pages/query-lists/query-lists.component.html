@@ -30,7 +30,7 @@
                                    (click)="setToLocalStorage(product.price, product.mark, product.description,product.available,product.name )"
                                    title="Agregar producto al carrito"
                                 ></a></li>
-                            <li><a class="fa fa-shopping-bag" title="Ver carrito"></a></li>
+                            <li><a class="fa fa-shopping-bag"  (click)="openShippingCart(product.price, product.mark, product.description,product.available,product.name,product.imgurl,product.id )" title="Ver carrito"></a></li>
                         </ul>
                         <span class="product-discount-label">{{product.available == 'true' ? 'Disponibles' : 'Agotados'}}</span>
                     </div>

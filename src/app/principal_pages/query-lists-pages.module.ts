@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from '../app-routing.module';
-import {QueryListsComponent, DetailsDialogComponent} from './query-lists/query-lists.component';
+import {QueryListsComponent, DetailsDialogComponent, ShippingCartDialogComponent} from './query-lists/query-lists.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MatIconModule } from "@angular/material/icon";
 import {RouterModule} from '@angular/router';
@@ -9,7 +9,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import { GalleryImagesComponent } from './gallery-images/gallery-images.component';
-import { MatButtonModule, MatToolbarModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material';
 import { GalleryModule } from '@ngx-gallery/core';
 import { LightboxModule } from '@ngx-gallery/lightbox';
 import { GallerizeModule } from '@ngx-gallery/gallerize';
@@ -21,6 +21,7 @@ import { FindUsComponent, PizzaPartyComponent } from './find-us/find-us.componen
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatToolbarModule} from '@angular/material/toolbar'; 
 
 import {MatSelectModule} from '@angular/material';
 
@@ -34,7 +35,8 @@ import {MatSelectModule} from '@angular/material';
     NewsIndexComponent,
     FindUsComponent,
     PizzaPartyComponent,
-    DetailsDialogComponent
+    DetailsDialogComponent,
+    ShippingCartDialogComponent
     ],
   exports: [
     QueryListsComponent,
@@ -45,11 +47,13 @@ import {MatSelectModule} from '@angular/material';
     NewsIndexComponent,
     FindUsComponent,
     PizzaPartyComponent,
-    DetailsDialogComponent
+    DetailsDialogComponent,
+    ShippingCartDialogComponent
   ],
   entryComponents:  [
     PizzaPartyComponent,
-    DetailsDialogComponent
+    DetailsDialogComponent,
+    ShippingCartDialogComponent
   ],
   imports: [
     CommonModule,
@@ -58,7 +62,7 @@ import {MatSelectModule} from '@angular/material';
     MatTabsModule,
     RouterModule,
     MatFormFieldModule,FormsModule, ReactiveFormsModule,
-    MatInputModule,MatSnackBarModule,MatCheckboxModule,MatRadioModule,MatSelectModule,MatButtonModule,
+    MatInputModule,MatSnackBarModule,MatCheckboxModule,MatRadioModule,MatSelectModule,MatButtonModule,MatToolbarModule,
     GalleryModule,
     LightboxModule,
     GallerizeModule,
