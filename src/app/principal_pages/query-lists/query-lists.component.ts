@@ -355,7 +355,6 @@ export class ShippingCartDialogComponent {
       this.dataTotal.push(JSON.parse(localStorage[key]))
       console.log(key + " => " + value);
       this.totalPrice = JSON.parse(localStorage[key]).price ;
-      (<HTMLInputElement>document.getElementById("totalPrice")).innerText = this.totalPrice;
   }
 
     this.dataExt = data;
@@ -367,7 +366,6 @@ export class ShippingCartDialogComponent {
   }
 
   removeToLocalStorage(key: any ){
-   
     localStorage.removeItem(key);
     var message = [];
     message["message"] = "Producto eliminado del carrito 🛍️🎊";
@@ -381,7 +379,8 @@ export class ShippingCartDialogComponent {
     this.dataTotal.push(JSON.parse(localStorage[key1]))
     console.log(key1 + " => " + value);
     this.totalPrice = JSON.parse(localStorage[key1]).price ;
-}
+};
+
 (<HTMLInputElement>document.getElementById("totalPrice")).innerText = this.totalPrice
   }
 
