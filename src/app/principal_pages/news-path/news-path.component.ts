@@ -1,14 +1,16 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { Observable, SubscriptionLike } from 'rxjs';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, FormGroupDirective, NgForm,Validators } from '@angular/forms';
 import { GlobalThingsService } from 'src/app/services/global/global-things.service';
 import { HttpClient } from '@angular/common/http';
-import { MatDialog, MatSidenav, MatSnackBar } from '@angular/material';
+import { MatDialog, MatSidenav, MatSnackBar, ErrorStateMatcher } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { PizzaPartyComponent } from '../find-us/find-us.component';
 import {MatButtonModule} from '@angular/material/button';
 import { TermsConditionDialogComponent } from 'src/app/layout/layout.tools';
+
+/** Error when invalid control is dirty, touched, or submitted. */
 
 @Component({
   selector: 'app-news-path',
@@ -16,6 +18,10 @@ import { TermsConditionDialogComponent } from 'src/app/layout/layout.tools';
   styleUrls: ['./news-path.component.scss']
 })
 export class NewsPathComponent  implements OnInit, OnDestroy {
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
   data: Observable<any[]>;
   header: Observable<any[]>;
   dataFiltered: Observable<any[]>;
@@ -61,7 +67,7 @@ export class NewsPathComponent  implements OnInit, OnDestroy {
 
 
       this.form = this.formBuilder.group({
-        email: [''],
+        email: [ '',[Validators.required, Validators.email]],
         is_subscriber: [false]
       });
  }

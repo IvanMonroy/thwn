@@ -52,11 +52,20 @@
         <div class="well">
           <h2>¡Suscríbase!</h2>
           <p>Subscríbase y reciba todas nuestras noticias y promociones (Proximamente)</p>
-          <form [formGroup]="form">
-            <mat-form-field appearance="fill">
-              <mat-label>Ingrese su email</mat-label>
-              <input matInput formControlName="email" placeholder="email" #inputFile>
+          <form [formGroup]="form">   
+            <mat-form-field  appearance="fill">
+              <mat-label>Email</mat-label>
+              <input matInput  [errorStateMatcher]="matcher" formControlName="email" autocomplete="off"
+               placeholder="Ej. ejemplo@ejemplo.com" #inputFile>
+              <mat-hint>Ingrese su email</mat-hint>
+              <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                Por favor ingrese un email valido
+              </mat-error>
+              <mat-error *ngIf="emailFormControl.hasError('required')">
+                El correo electronico es <strong>requerido</strong>
+              </mat-error>
             </mat-form-field>
+            
             <mat-checkbox formControlName="is_subscriber" #inputFile> <a  (click)="openDialog()">Aceptar terminos y condiciones.</a></mat-checkbox>
             <div class="example-button-row">
               <button mat-stroked-button color="primary" (click)="submitForm()" type="submit">Subscríbase</button>

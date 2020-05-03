@@ -128,59 +128,64 @@ export interface DialogData {
   styleUrls: ['./query-lists.component.scss'],
   template: `
   <div mat-dialog-content>
-  <div class="container" style="width: 100%;">
-  <div class="modal-body">
-  <div class="row">
-      <div class="col-md-6 product_img">
-          <img 
-          width="348px" height="348px" onError="this.src='../../../assets/images/item-not-found.png'" data-src="holder.js/348x348" style="width: 348px; height: 348px; max-width: 100%;" data-holder-rendered="true" 
-               src="{{dataExt.imgurl}}" class="img-responsive">
-      </div>
-      <div class="col-md-6 product_content">
+  <div class="container" style="width: 100%; height: 400px">
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-6 product_img">
+          <img width="348px" height="348px" onError="this.src='../../../assets/images/item-not-found.png'"
+            data-src="holder.js/348x348" style="width: 348px; height: 348px; max-width: 100%;"
+            data-holder-rendered="true" src="{{dataExt.imgurl}}" class="img-responsive">
+        </div>
+        <div class="col-md-6 product_content">
           <h4>Product Id: <span>{{dataExt.id}}</span></h4>
           <div class="rating">
-              (Tecni- hidráulicos JB)
+            (Tecni- hidráulicos JB)
           </div>
           <div class="rating">
-          {{dataExt.available == true ? "Unidades disponibles" : "Unidades agotadas"}} 
+            {{dataExt.available == true ? "Unidades disponibles" : "Unidades agotadas"}}
           </div>
           <p>{{dataExt.name}} {{dataExt.mark}} {{dataExt.description}}</p>
-          <h3 class="cost"><span class="glyphicon glyphicon-usd"></span> {{dataExt.price}} <small class="pre-cost"><span class="glyphicon glyphicon-usd"></span>{{dataExt.price - 1000}}</small></h3>
+          <h3 class="cost"><span class="glyphicon glyphicon-usd"></span>$ {{dataExt.price}} <small class="pre-cost"><span
+                class="glyphicon glyphicon-usd"></span>$ {{dataExt.price - 1000}}</small></h3>
           <div class="row">
 
-          <mat-form-field class="example-full-width">
-          <mat-label>Cantidad</mat-label>
-          <textarea id="TxtCant" matInput placeholder="Ingrese una cantidad..." value="0"></textarea>
-        </mat-form-field>
-             
-          
-             
+            <mat-form-field class="example-full-width">
+              <mat-label>Cantidad</mat-label>
+              <textarea id="TxtCant" matInput placeholder="Ingrese una cantidad..." value="0"></textarea>
+            </mat-form-field>
+
+
+
           </div>
           <div class="space-ten"></div>
           <div class="example-button-row">
-          <div class="example-flex-container">
-          <div class="example-button-container">
-            <button mat-mini-fab color="primary" (click)="setToLocalStorage(dataExt.price, dataExt.mark, dataExt.description,dataExt.available,dataExt.name )" aria-label="Agregar al carrito">
-              <mat-icon>shopping_cart</mat-icon>
-            </button>
-          </div>
-         
+            <div class="example-flex-container">
+              <div class="example-button-container">
+                <button mat-mini-fab color="primary"
+                  (click)="setToLocalStorage(dataExt.price, dataExt.mark, dataExt.description,dataExt.available,dataExt.name )"
+                  aria-label="Agregar al carrito" title="Agregar al carrito">
+                  <mat-icon>shopping_cart</mat-icon>
+                </button>
+              </div>
 
-          <div class="example-button-container">
-          <button mat-mini-fab color="primary" (click)="calculatePrice(dataExt.price)" aria-label="Calular precio">
-            <mat-icon>attach_money</mat-icon>
-          </button>
+
+              <div class="example-button-container">
+                <button mat-mini-fab color="primary" (click)="calculatePrice(dataExt.price)"
+                  aria-label="Calular precio" title="Calular precio">
+                  <mat-icon>attach_money</mat-icon>
+                </button>
+              </div>
+
+            </div>
+            <br>
+            <h3 style="margin: 0 auto;  text-align: center;" class="cost" id="Cost"><span
+                class="glyphicon glyphicon-usd"></span> $0 </h3>
+          </div>
         </div>
-        
-</div>
-<br>
-        <h3 style="margin: 0 auto;  text-align: center;" class="cost" id="Cost"><span class="glyphicon glyphicon-usd"></span> 0$ </h3>
-           </div>
       </div>
+    </div>
   </div>
 </div>
-  </div>
-  </div>
   `
 })
 export class DetailsDialogComponent {
@@ -199,8 +204,9 @@ export class DetailsDialogComponent {
   }
 
   setToLocalStorage(price: any,mark: any,description: any,available: any,name: any ){
+    var inputValue = (<HTMLInputElement>document.getElementById("TxtCant")).value;
     var array =  {
-      "price": price,
+      "price": (parseInt(price) * parseInt(inputValue)).toFixed(3),
       "mark": mark,
       "description": description,
       "available": available,
