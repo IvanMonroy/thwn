@@ -378,7 +378,7 @@ export class ShippingCartDialogComponent {
     var value = localStorage[key1];
     this.dataTotal.push(JSON.parse(localStorage[key1]))
     console.log(key1 + " => " + value);
-    this.totalPrice = JSON.parse(localStorage[key1]).price ;
+    this.totalPrice += JSON.parse(localStorage[key1]).price ;
 };
 
 (<HTMLInputElement>document.getElementById("totalPrice")).innerText = this.totalPrice
