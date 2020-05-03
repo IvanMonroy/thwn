@@ -145,3 +145,41 @@
 .product-grid8 .all-deals:hover{background-color:#285dbf}
 @media only screen and (max-width:990px){.product-grid8{margin-bottom:30px}
 }
+
+
+
+/********************* MODAL DETAILS**********************/
+
+
+.product_view .modal-dialog{max-width: 800px; width: 100%;}
+.pre-cost{text-decoration: line-through; color: #a5a5a5;}
+.space-ten{padding: 10px 0;}
+
+
+.example-label {
+    display: table-cell;
+    font-size: 14px;
+    margin-left: 8px;
+    width: 120px;
+  }
+  
+  .example-button-row {
+    display: table-cell;
+  }
+  
+  .example-button-row button {
+    display: table-cell;
+    margin-right: 8px;
+  }
+  
+  .example-flex-container {
+    display: flex;
+    justify-content: space-between;
+    width: 170px;
+  }
+  
+  .example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+  }

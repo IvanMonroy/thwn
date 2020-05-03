@@ -20,14 +20,17 @@
             <div class="col-md-4 col-sm-6" *ngFor="let product of dataFiltered | async">
                 <div class="product-grid8">
                     <div class="product-image8">
-                        <a href="#">
+                        <a title="Ver detalles">
                             <img class="pic-1 media-object" [src]="product.imgurl "  onError="this.src='../../../assets/images/item-not-found.png'" data-src="holder.js/348x348" style="width: 348px; height: 348px;" data-holder-rendered="true" width="1000" alt="{{product.name}}">
                             <img class="pic-2 media-object" src="../../../assets/images/no-found.png " data-src="holder.js/348x348" style="width: 348px; height: 348px;" data-holder-rendered="true">
                         </a>
                         <ul class="social">
-                            <li><a class="fa fa-search"(click)="findFirst(product.name);" ></a></li>
-                            <li><a class="fa fa-shopping-bag" (click)="setToLocalStorage(product.price, product.mark, product.description,product.available,product.name )"></a></li>
-                            <li><a href="" class="fa fa-shopping-cart"></a></li>
+                            <li><a class="fa fa-search" title="Ver detalles" (click)="openDialog(product.price, product.mark, product.description,product.available,product.name,product.imgurl,product.id )"></a></li>
+                            <li><a class="fa fa-cart-plus"
+                                   (click)="setToLocalStorage(product.price, product.mark, product.description,product.available,product.name )"
+                                   title="Agregar producto al carrito"
+                                ></a></li>
+                            <li><a class="fa fa-shopping-bag" title="Ver carrito"></a></li>
                         </ul>
                         <span class="product-discount-label">{{product.available == 'true' ? 'Disponibles' : 'Agotados'}}</span>
                     </div>

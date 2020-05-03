@@ -101,7 +101,7 @@ export class FindUsComponent implements OnInit {
 export class PizzaPartyComponent {
   message: any;
   constructor(@Inject(MAT_SNACK_BAR_DATA) public data: any) {
-    this.message =  data['message'] + " " + (data['data'].name != null ?  data['data'].name + "🔨🎉🎈" : "😔⚠️")
+    this.message =  data['message'] + " " + (data['data'].name != null ?  data['data'].name + "🔨🎉🎈" : "")
    }
 
 }

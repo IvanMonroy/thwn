@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from '../app-routing.module';
-import {QueryListsComponent} from './query-lists/query-lists.component';
+import {QueryListsComponent, DetailsDialogComponent} from './query-lists/query-lists.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MatIconModule } from "@angular/material/icon";
 import {RouterModule} from '@angular/router';
@@ -34,6 +34,7 @@ import {MatSelectModule} from '@angular/material';
     NewsIndexComponent,
     FindUsComponent,
     PizzaPartyComponent,
+    DetailsDialogComponent
     ],
   exports: [
     QueryListsComponent,
@@ -43,10 +44,12 @@ import {MatSelectModule} from '@angular/material';
     AboutUsComponent,
     NewsIndexComponent,
     FindUsComponent,
-    PizzaPartyComponent
+    PizzaPartyComponent,
+    DetailsDialogComponent
   ],
   entryComponents:  [
-    PizzaPartyComponent
+    PizzaPartyComponent,
+    DetailsDialogComponent
   ],
   imports: [
     CommonModule,

@@ -80,7 +80,7 @@ export class NewsPathComponent  implements OnInit, OnDestroy {
         formData.append("is_subscriber", this.form.get('is_subscriber').value);
         if(this.form.get('is_subscriber').value != true){
           var message = [];
-           message["message"] = "Debe haceptar terminos y condiciones";
+           message["message"] = "Debe haceptar terminos y condiciones 😔⚠️";
            message["data"] = ".";
           this.openSnackBar(message)
         }
