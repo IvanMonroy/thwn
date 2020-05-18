@@ -25,6 +25,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 
 import {MatSelectModule} from '@angular/material';
 
+import { SocialMediaComponent } from '../social-media/social-media/social-media.component';
+
 @NgModule({
   declarations: [
     QueryListsComponent,
@@ -36,7 +38,8 @@ import {MatSelectModule} from '@angular/material';
     FindUsComponent,
     PizzaPartyComponent,
     DetailsDialogComponent,
-    ShippingCartDialogComponent
+    ShippingCartDialogComponent,
+    SocialMediaComponent
     ],
   exports: [
     QueryListsComponent,
@@ -48,12 +51,14 @@ import {MatSelectModule} from '@angular/material';
     FindUsComponent,
     PizzaPartyComponent,
     DetailsDialogComponent,
-    ShippingCartDialogComponent
+    ShippingCartDialogComponent,
+    SocialMediaComponent
   ],
   entryComponents:  [
     PizzaPartyComponent,
     DetailsDialogComponent,
-    ShippingCartDialogComponent
+    ShippingCartDialogComponent,
+    SocialMediaComponent
   ],
   imports: [
     CommonModule,
