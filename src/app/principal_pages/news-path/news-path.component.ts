@@ -75,26 +75,27 @@ export class NewsPathComponent  implements OnInit, OnDestroy {
         is_subscriber: [false]
       });
 
+      this.subscription =  this.globalService.GetAllModel(this.model).subscribe((data: any[]) => {
+        this.data = data['data'];
+        this.backgroudBanner = data['data'].img_url_one
+        this.bodyOne = data['data'].bodyone
+        this.titlePage = data['data'].title
+        this.header = data['title'];
+         console.log(this.backgroudBanner); 
+         this.meta.removeTag('property = "og:image"'); 
+         this.meta.removeTag('property = "og:description"'); 
+         this.meta.removeTag('property = "og:title"'); 
+  
+         this.meta.updateTag({ property: 'og:image', content:  this.backgroudBanner })
+         this.meta.updateTag({ property: 'og:description', content: this.bodyOne })
+         this.meta.updateTag({ property: 'og:title', content: this.bodyOne })
+  
+        })
     
  }
 
   ngOnInit() {
-    this.subscription =  this.globalService.GetAllModel(this.model).subscribe((data: any[]) => {
-      this.data = data['data'];
-      this.backgroudBanner = data['data'].img_url_one
-      this.bodyOne = data['data'].bodyone
-      this.titlePage = data['data'].title
-      this.header = data['title'];
-       console.log(this.backgroudBanner); 
-       this.meta.removeTag('property = "og:image"'); 
-       this.meta.removeTag('property = "og:description"'); 
-       this.meta.removeTag('property = "og:title"'); 
 
-       this.meta.updateTag({ property: 'og:image', content:  this.backgroudBanner })
-       this.meta.updateTag({ property: 'og:description', content: this.bodyOne })
-       this.meta.updateTag({ property: 'og:title', content: this.bodyOne })
-
-      })
       
   }
 
