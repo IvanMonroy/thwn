@@ -88,9 +88,14 @@ export class NewsPathComponent  implements OnInit, OnDestroy {
        console.log(this.backgroudBanner); 
 
        debugger
+       this.meta.updateTag({ name: 'og:image', content:  this.backgroudBanner })
+       this.meta.updateTag({ name: 'og:description', content: this.bodyOne })
+       this.meta.updateTag({ name: 'og:title', content: this.bodyOne })
+
        this.meta.updateTag({ property: 'og:image', content:  this.backgroudBanner })
        this.meta.updateTag({ property: 'og:description', content: this.bodyOne })
        this.meta.updateTag({ property: 'og:title', content: this.bodyOne })
+
       })
       
   }
