@@ -9,6 +9,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { PizzaPartyComponent } from '../find-us/find-us.component';
 import {MatButtonModule} from '@angular/material/button';
 import { TermsConditionDialogComponent } from 'src/app/layout/layout.tools';
+import { Meta } from '@angular/platform-browser';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 
@@ -28,6 +29,8 @@ export class NewsPathComponent  implements OnInit, OnDestroy {
   filter: FormControl;
   filter$: Observable<string>;
   backgroudBanner: string;
+  bodyOne: string;
+  titlePage: string;
   model: string;
   icon: string;
   tittle: string;
@@ -52,7 +55,8 @@ export class NewsPathComponent  implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     media: MediaMatcher,
     public formBuilder: FormBuilder,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private meta: Meta
   ) {
     this.mobileQuery = media.matchMedia("(max-width: 981px)");
     this.mobileQuery2 = media.matchMedia("(max-width: 520px)");
@@ -70,14 +74,21 @@ export class NewsPathComponent  implements OnInit, OnDestroy {
         email: [ '',[Validators.required, Validators.email]],
         is_subscriber: [false]
       });
+
+    
  }
 
   ngOnInit() {
     this.subscription =  this.globalService.GetAllModel(this.model).subscribe((data: any[]) => {
       this.data = data['data'];
       this.backgroudBanner = data['data'].img_url_one
+      this.bodyOne = data['data'].bodyone
+      this.titlePage = data['data'].title
       this.header = data['title'];
        console.log(this.backgroudBanner);  })
+       this.meta.updateTag({ name: 'og:image', content:  this.backgroudBanner })
+       this.meta.updateTag({ name: 'og:description', content: this.bodyOne })
+       this.meta.updateTag({ name: 'og:title', content: this.bodyOne })
   }
 
   submitForm() {
