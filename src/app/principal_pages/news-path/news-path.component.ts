@@ -85,10 +85,14 @@ export class NewsPathComponent  implements OnInit, OnDestroy {
       this.bodyOne = data['data'].bodyone
       this.titlePage = data['data'].title
       this.header = data['title'];
-       console.log(this.backgroudBanner);  })
+       console.log(this.backgroudBanner); 
+
+       debugger
        this.meta.updateTag({ name: 'og:image', content:  this.backgroudBanner })
        this.meta.updateTag({ name: 'og:description', content: this.bodyOne })
        this.meta.updateTag({ name: 'og:title', content: this.bodyOne })
+      })
+      
   }
 
   submitForm() {
