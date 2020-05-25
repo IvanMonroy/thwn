@@ -16,7 +16,9 @@ export class SocialMediaComponent implements AfterViewInit {
                   appId: 'your-app-id',
                   autoLogAppEvents: true,
                   xfbml: true,
-                  version: 'v3.0'
+                  version: 'v3.0',
+                  picture: 'https://antrax-labs.org/wp-content/uploads/2018/12/malware-xbash-windows-640x393-3.jpg', 
+                  title: 'your_title',  
               });
           };
       }
