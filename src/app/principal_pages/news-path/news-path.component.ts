@@ -1,13 +1,13 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { Observable, SubscriptionLike } from 'rxjs';
-import { FormControl, FormGroup, FormBuilder, FormGroupDirective, NgForm,Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { GlobalThingsService } from 'src/app/services/global/global-things.service';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog, MatSidenav, MatSnackBar, ErrorStateMatcher } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { PizzaPartyComponent } from '../find-us/find-us.component';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { TermsConditionDialogComponent } from 'src/app/layout/layout.tools';
 import { Meta } from '@angular/platform-browser';
 
@@ -18,7 +18,7 @@ import { Meta } from '@angular/platform-browser';
   templateUrl: './news-path.component.html',
   styleUrls: ['./news-path.component.scss']
 })
-export class NewsPathComponent  implements OnInit, OnDestroy {
+export class NewsPathComponent implements OnInit, OnDestroy {
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
@@ -46,7 +46,7 @@ export class NewsPathComponent  implements OnInit, OnDestroy {
   @ViewChild("sidenav", { static: true }) sidenav: MatSidenav;
   @ViewChild("inputFile", { static: true }) myInputVariable: ElementRef;
   title = 'tecni-hidraulicos';
-  
+
   constructor(
     private globalService: GlobalThingsService,
     private http: HttpClient,
@@ -66,56 +66,67 @@ export class NewsPathComponent  implements OnInit, OnDestroy {
         this.model = 'index_news/info_new/',
         this.icon = data.items_icon,
         this.tittle = data.title
-      });
-      this.model = this.model + this.route.snapshot.paramMap.get('id');
+    });
+    this.model = this.model + this.route.snapshot.paramMap.get('id');
 
 
-      this.form = this.formBuilder.group({
-        email: [ '',[Validators.required, Validators.email]],
-        is_subscriber: [false]
-      });
+    this.form = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      is_subscriber: [false]
+    });
 
-      this.subscription =  this.globalService.GetAllModel(this.model).subscribe((data: any[]) => {
-        this.data = data['data'];
-        this.backgroudBanner = data['data'].img_url_one
-        this.bodyOne = data['data'].bodyone
-        this.titlePage = data['data'].title
-        this.header = data['title'];
-         console.log(this.backgroudBanner); 
-         this.meta.addTag({property: 'og:image', content:  this.backgroudBanner});
-         this.meta.addTag({ property: 'og:description', content: this.bodyOne })
-         this.meta.addTag({ property: 'og:title', content: this.bodyOne })
-        })
-    
- }
+    this.subscription = this.globalService.GetAllModel(this.model).subscribe((data: any[]) => {
+      this.data = data['data'];
+      this.backgroudBanner = data['data'].img_url_one
+      this.bodyOne = data['data'].bodyone
+      this.titlePage = data['data'].title
+      this.header = data['title'];
+      console.log(this.backgroudBanner);
+      // this.meta.addTags([
+      //   { property: 'og:type', content: "article" },
+      //   { property: 'og:image:width', content: "828" },
+      //   { property: 'og:image:height', content: "450" },
+      //   { property: 'og:image', content: this.backgroudBanner },
+      //   { property: 'og:description', content: this.bodyOne },
+      //   { property: 'og:title', content: this.bodyOne },
+      //   { name: 'date', content: '2020-05-31', scheme: 'YYYY-MM-DD' },
+      //   { charset: 'UTF-8' }
+      // ]);
+
+
+
+    })
+    debugger
+
+  }
 
   ngOnInit() {
 
-      
+
   }
 
   submitForm() {
     var formData: any = new FormData();
-        formData.append("email", this.form.get('email').value);
-        formData.append("is_subscriber", this.form.get('is_subscriber').value);
-        if(this.form.get('is_subscriber').value != true){
-          var message = [];
-           message["message"] = "Debe haceptar terminos y condiciones 😔⚠️";
-           message["data"] = ".";
-          this.openSnackBar(message)
-        }
-        else{
-          this.postData( formData)  
-          
-        }   
+    formData.append("email", this.form.get('email').value);
+    formData.append("is_subscriber", this.form.get('is_subscriber').value);
+    if (this.form.get('is_subscriber').value != true) {
+      var message = [];
+      message["message"] = "Debe haceptar terminos y condiciones 😔⚠️";
+      message["data"] = ".";
+      this.openSnackBar(message)
+    }
+    else {
+      this.postData(formData)
+
+    }
   }
 
-  postData(data){
-  
+  postData(data) {
+
     this.http.post('https://willreyn-api.herokuapp.com/api/subscribers/subscribe', data).subscribe((data: any[]) => {
       console.log(data['message']);
-     this.openSnackBar(data);
-     this.myInputVariable.nativeElement.value = '';
+      this.openSnackBar(data);
+      this.myInputVariable.nativeElement.value = '';
     }, err => {
       console.log(err['error'].errors)
       console.log(err);
@@ -127,12 +138,12 @@ export class NewsPathComponent  implements OnInit, OnDestroy {
     this._snackBar.openFromComponent(PizzaPartyComponent, {
       duration: 6000,
       data: message
-      
+
     });
   }
 
 
-  
+
   openDialog(): void {
     const dialogRef = this.dialog.open(TermsConditionDialogComponent, {
       width: '100%',
