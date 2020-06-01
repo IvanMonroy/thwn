@@ -82,19 +82,21 @@ export class NewsPathComponent implements OnInit, OnDestroy {
       this.titlePage = data['data'].title
       this.header = data['title'];
       console.log(this.backgroudBanner);
-      // this.meta.addTags([
-      //   { property: 'og:type', content: "article" },
-      //   { property: 'og:image:width', content: "828" },
-      //   { property: 'og:image:height', content: "450" },
-      //   { property: 'og:image', content: this.backgroudBanner },
-      //   { property: 'og:description', content: this.bodyOne },
-      //   { property: 'og:title', content: this.bodyOne },
-      //   { name: 'date', content: '2020-05-31', scheme: 'YYYY-MM-DD' },
-      //   { charset: 'UTF-8' }
-      // ]);
-
-
-
+      this.meta.addTags([
+        { property: 'og:locale', content: "en_US" },
+        { property: 'og:type', content: "article" },
+        { property: 'og:title', content: this.bodyOne },
+        { property: 'og:description', content: this.bodyOne  },
+        { property: 'og:url', content: document.location.href },
+        { property: 'og:site_name', content: this.bodyOne  },
+        { property: 'article:tag',content: this.bodyOne  },
+        { property: 'article:section', content: "Nueva noticia Tecnihidráulicos" },
+        { property: 'og:image', content: this.backgroudBanner },
+        { property: 'og:image:secure_url', content: this.backgroudBanner },
+        { property: 'og:image:width', content: "900" },
+        { property: 'og:image:height', content: "560" },
+        { charset: 'UTF-8' }
+      ]);
     })
     debugger
 
