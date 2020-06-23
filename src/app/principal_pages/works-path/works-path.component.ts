@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { map, startWith } from 'rxjs/operators';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-works-path',
@@ -31,10 +32,11 @@ export class WorksPathComponent implements OnInit, OnDestroy {
     private http: HttpClient,
     public dialog: MatDialog,
     private activatedRoute: ActivatedRoute,
+    private _sanitizer: DomSanitizer,
   ) {
     this.activatedRoute.data.subscribe(data => {
       document.title = data.title,
-        this.model = '/works/index_menu',
+        this.model = '/our_works/index_for_menu',
         this.icon = data.items_icon,
         this.tittle = data.title
       });
@@ -42,16 +44,17 @@ export class WorksPathComponent implements OnInit, OnDestroy {
    }
 
   ngOnInit() {
-    this.data = this.globalService.GetAllModel(this.model)
-    console.log(this.data);
-    this.filter = new FormControl('');
-    this.filter$ = this.filter.valueChanges.pipe(startWith(''));
-    this.dataFiltered = combineLatest(this.data, this.filter$).pipe(
-      map(([datas, filterString]) => datas['data']
-        .filter(data => data.title.toLowerCase().indexOf(filterString.toLowerCase()) !== -1
-        ))
-    )
-    this.subscription = this.data.subscribe()
+
+    this.subscription =  this.globalService.GetAllModel(this.model).subscribe((data: any[]) => {
+      for(var i = 0; i < data['data'].length; i++){
+      data['data'][i].image1 = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,'  + data['data'][i].image_one);
+      data['data'][i].image2 = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,'  + data['data'][i].image_two);
+      }
+      this.data = data['data']
+    })
+    
+   
+  
     console.log("Subscription " + this.tittle + this.subscription.closed);
   }
 

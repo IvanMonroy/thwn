@@ -95,4 +95,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
   background-color: #285dbf !important;
 }
+.mat-nav-list .mat-list-item{
+  text-decoration: none !important;
+}
 @import "~bootstrap/dist/css/bootstrap.css";

@@ -8,26 +8,28 @@ import { GlobalThingsService } from 'src/app/services/global/global-things.servi
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-gallery-images',
-  template:  `
-  <h4 style="text-align: center;">{{header}}</h4>
-  <div class="row" gallerize >
-  <div class="col-md-4" *ngFor="let img of data" style="margin-bottom: 15px;">
-     <div class="card">
-        <img  (click)="ChangeClasses()" class="card-img-top media-object" src="{{img.srcUrl}}" alt="Card image cap"  data-src="holder.js/348x348" style="width: 348px; height: 348px; margin: 0 auto;" data-holder-rendered="true">
-        <div class="card-body">
-           <h5 class="card-title border-bottom pb-3">{{img.header}} </h5>
-           <p class="card-text">{{img.description}}</p>
-        </div>
-     </div>
-  </div>  
-</div>
+  templateUrl: './gallery-images.component.html',
+//   template:  `
+//   <h4 style="text-align: center;">{{header}}</h4>
+//   <div class="row" gallerize >
+//   <div class="col-md-4" *ngFor="let img of data" style="margin-bottom: 15px;">
+//      <div class="card">
+//         <img  (click)="ChangeClasses()" class="card-img-top media-object" src="{{img.srcUrl}}" alt="Card image cap"  data-src="holder.js/348x348" style="width: 348px; height: 348px; margin: 0 auto;" data-holder-rendered="true">
+//         <div class="card-body">
+//            <h5 class="card-title border-bottom pb-3">{{img.header}} </h5>
+//            <p class="card-text">{{img.description}}</p>
+//         </div>
+//      </div>
+//   </div>  
+// </div>
 
 
 
-`,
+// `,
   styleUrls: ['./gallery-images.component.scss'],
   //changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -59,10 +61,12 @@ export class GalleryImagesComponent implements OnInit {
     public dialog: MatDialog,
     private activatedRoute: ActivatedRoute,
     public gallery: Gallery,
-    public lightbox: Lightbox) {
+    public lightbox: Lightbox,
+    private _sanitizer: DomSanitizer,
+    ) {
       this.activatedRoute.data.subscribe(data => {
         document.title = data.title,
-          this.model = 'works/index_gallery_url/',
+          this.model = '/our_works/info_our_works/',
           this.icon = data.items_icon,
           this.tittle = data.title
         });
@@ -77,7 +81,14 @@ export class GalleryImagesComponent implements OnInit {
      ngOnInit() {
            
       this.subscription =  this.globalService.GetAllModel(this.model).subscribe((data: any[]) => {
+          data['data'].image1 = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,'  + data['data'].image_one);
+          data['data'].image2 = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,'  + data['data'].image_two);
+          data['data'].image3 = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,'  + data['data'].image_three);
+          data['data'].image4 = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,'  + data['data'].image_fourth);
+          data['data'].image5 = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,'  + data['data'].image_fifth);
+         
         this.data = data['data'];
+        
         this.header = data['title'];
         console.log(this.data);      
       })

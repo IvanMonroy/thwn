@@ -40,6 +40,8 @@ export class NewsPathComponent implements OnInit, OnDestroy {
   subscription: SubscriptionLike;
   newVehicle: Observable<any[]>;
   form: FormGroup;
+  divStyle: string;
+
 
   mobileQuery: MediaQueryList;
   mobileQuery2: MediaQueryList;
@@ -86,10 +88,10 @@ export class NewsPathComponent implements OnInit, OnDestroy {
         { property: 'og:locale', content: "en_US" },
         { property: 'og:type', content: "article" },
         { property: 'og:title', content: this.bodyOne },
-        { property: 'og:description', content: this.bodyOne  },
+        { property: 'og:description', content: this.bodyOne },
         { property: 'og:url', content: document.location.href },
-        { property: 'og:site_name', content: this.bodyOne  },
-        { property: 'article:tag',content: this.bodyOne  },
+        { property: 'og:site_name', content: this.bodyOne },
+        { property: 'article:tag', content: this.bodyOne },
         { property: 'article:section', content: "Nueva noticia Tecnihidráulicos" },
         { property: 'og:image', content: this.backgroudBanner },
         { property: 'og:image:secure_url', content: this.backgroudBanner },
@@ -104,6 +106,18 @@ export class NewsPathComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
+  }
+
+  ngAfterViewInit() {
+    this.divStyle = document.getElementsByClassName("post-title-block")[0].clientHeight.toString() + "px";
+    const cnElems = document.getElementsByClassName("banner-section");
+
+    for (let i = 0; i < 1; i++) {
+      const e = cnElems[i];
+      if (e instanceof HTMLElement) {
+        e.style.height = this.divStyle;
+      }
+    }
 
   }
 
