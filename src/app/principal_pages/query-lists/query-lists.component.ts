@@ -3,13 +3,14 @@ import { GlobalThingsService } from '../../services/global/global-things.service
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable, combineLatest, SubscriptionLike } from 'rxjs';
 
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { map, startWith } from 'rxjs/operators';
+import { FormControl, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { map, startWith, debounce } from 'rxjs/operators';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { error } from 'util';
 import { DialogOverviewExampleDialog } from 'src/app/layout/layout.tools';
 import { PizzaPartyComponent } from '../find-us/find-us.component';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
@@ -32,40 +33,66 @@ export class QueryListsComponent implements OnInit, OnDestroy {
   value = 50;
   subscription: SubscriptionLike;
   newVehicle: Observable<any[]>;
-
+  form: FormGroup;
 
   constructor(
     private globalService: GlobalThingsService,
     private http: HttpClient,
     public dialog: MatDialog,
     private activatedRoute: ActivatedRoute,
-    private _snackBar: MatSnackBar
- 
-  ) { 
+    private _snackBar: MatSnackBar,
+    private _sanitizer: DomSanitizer,
+    public formBuilder: FormBuilder,
+  
+
+  ) {
     this.activatedRoute.data.subscribe(data => {
       document.title = data.title,
         this.model = data.model,
         this.icon = data.items_icon,
         this.tittle = data.title
-      });
+    });
 
+    this.form = this.formBuilder.group({
+      filter: ['']
+    });
+    
+  }
+  
+
+
+
+  ngOnInit() {
+
+    this.subscription = this.globalService.GetAllModel(this.model).subscribe(
+      (data: any[]) => {
+        for (var i = 0; i < data['data'].length; i++) {
+          data['data'][i].imgurl = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + data['data'][i].imgurl);
+          data['data'][i].imageurltwo = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + data['data'][i].imageurltwo);
+        }
+        this.data = data['data']
+      })
+
+    console.log("Subscription " + this.tittle + this.subscription.closed);
   }
 
+  getByDesc(){
+    var formData: any = new FormData();
+    formData.append("filter", this.form.get('filter').value);  
+    this.postForm(formData);
+ 
+  }
 
-  
-  ngOnInit() {
-   
-    this.data = this.globalService.GetAllModel(this.model)
-    console.log(this.data);
-    this.filter = new FormControl('');
-    this.filter$ = this.filter.valueChanges.pipe(startWith(''));
-    this.dataFiltered = combineLatest(this.data, this.filter$).pipe(
-      map(([datas, filterString]) => datas['data']
-        .filter(data => data.name.toLowerCase().indexOf(filterString.toLowerCase()) !== -1
-        ))
-    )
-    this.subscription = this.data.subscribe()
-    console.log("Subscription " + this.tittle + this.subscription.closed);
+  postForm(formData){
+    this.http.post('https://willreyn-api.herokuapp.com/api/products/get_by_desc',formData).subscribe(
+      (data: any[]) => {
+        for (var i = 0; i < data['data'].length; i++) {
+          data['data'][i].imgurl = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + data['data'][i].imgurl);
+          data['data'][i].imageurltwo = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + data['data'][i].imageurltwo);
+        }
+        this.data = data['data']
+      })
+    
   }
 
   ngOnDestroy() {
@@ -77,12 +104,12 @@ export class QueryListsComponent implements OnInit, OnDestroy {
     this._snackBar.openFromComponent(PizzaPartyComponent, {
       duration: 6000,
       data: message
-      
+
     });
   }
 
-  setToLocalStorage(price: any,mark: any,description: any,available: any,name: any ){
-    var array =  {
+  setToLocalStorage(price: any, mark: any, description: any, available: any, name: any) {
+    var array = {
       "price": price,
       "mark": mark,
       "description": description,
@@ -93,10 +120,10 @@ export class QueryListsComponent implements OnInit, OnDestroy {
     var message = [];
     message["message"] = "Producto agregado al carrito 🛍️🎊";
     message["data"] = ".";
-   this.openSnackBar(message)
+    this.openSnackBar(message)
   }
 
-  openDialog(price: any,mark: any,description: any,available: any,name: any, imgurl: any, id: any): void {
+  openDialog(price: any, mark: any, description: any, available: any, name: any, imgurl: any, id: any): void {
     const dialogRef = this.dialog.open(DetailsDialogComponent, {
       width: '100%',
       data: {
@@ -115,7 +142,7 @@ export class QueryListsComponent implements OnInit, OnDestroy {
   }
 
 
-  openShippingCart(price: any,mark: any,description: any,available: any,name: any, imgurl: any, id: any): void {
+  openShippingCart(price: any, mark: any, description: any, available: any, name: any, imgurl: any, id: any): void {
     const dialogRef = this.dialog.open(ShippingCartDialogComponent, {
       width: '100%',
       data: {
@@ -216,15 +243,15 @@ export class DetailsDialogComponent {
   ) {
     this.dataExt = data;
     console.log(this.dataExt)
-   }
-    
+  }
+
   onNoClick(): void {
     this.dialogRef.close();
   }
 
-  setToLocalStorage(price: any,mark: any,description: any,available: any,name: any ){
+  setToLocalStorage(price: any, mark: any, description: any, available: any, name: any) {
     var inputValue = (<HTMLInputElement>document.getElementById("TxtCant")).value;
-    var array =  {
+    var array = {
       "price": (parseInt(price) * parseInt(inputValue)).toFixed(3),
       "mark": mark,
       "description": description,
@@ -235,24 +262,24 @@ export class DetailsDialogComponent {
     var message = [];
     message["message"] = "Producto agregado al carrito 🛍️🎊";
     message["data"] = ".";
-   this.openSnackBar(message)
+    this.openSnackBar(message)
   }
 
   openSnackBar(message: any[]) {
     this._snackBar.openFromComponent(PizzaPartyComponent, {
       duration: 6000,
       data: message
-      
+
     });
   }
 
-  calculatePrice(price: any){
+  calculatePrice(price: any) {
     var inputValue = (<HTMLInputElement>document.getElementById("TxtCant")).value;
-    (<HTMLInputElement>document.getElementById("Cost")).innerText = (parseInt(price) * parseInt(inputValue)).toFixed(3) + "$";  
+    (<HTMLInputElement>document.getElementById("Cost")).innerText = (parseInt(price) * parseInt(inputValue)).toFixed(3) + "$";
     var message = [];
     message["message"] = "Precio calculado 📠💵";
     message["data"] = ".";
-   this.openSnackBar(message)
+    this.openSnackBar(message)
   }
 
 }
@@ -348,40 +375,40 @@ export class ShippingCartDialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private _snackBar: MatSnackBar
   ) {
-    
-    for(var i=0, len=localStorage.length; i<len; i++) {
+
+    for (var i = 0, len = localStorage.length; i < len; i++) {
       var key = localStorage.key(i);
       var value = localStorage[key];
       this.dataTotal.push(JSON.parse(localStorage[key]))
       console.log(key + " => " + value);
-      this.totalPrice = JSON.parse(localStorage[key]).price ;
-  }
+      this.totalPrice = JSON.parse(localStorage[key]).price;
+    }
 
     this.dataExt = data;
     console.log(this.dataTotal)
-   }
-    
+  }
+
   onNoClick(): void {
     this.dialogRef.close();
   }
 
-  removeToLocalStorage(key: any ){
+  removeToLocalStorage(key: any) {
     localStorage.removeItem(key);
     var message = [];
     message["message"] = "Producto eliminado del carrito 🛍️🎊";
     message["data"] = ".";
-   this.openSnackBar(message)
+    this.openSnackBar(message)
 
-   this.dataTotal = [];
-   for(var i=0, len=localStorage.length; i<len; i++) {
-    var key1 = localStorage.key(i);
-    var value = localStorage[key1];
-    this.dataTotal.push(JSON.parse(localStorage[key1]))
-    console.log(key1 + " => " + value);
-    this.totalPrice += JSON.parse(localStorage[key1]).price ;
-};
+    this.dataTotal = [];
+    for (var i = 0, len = localStorage.length; i < len; i++) {
+      var key1 = localStorage.key(i);
+      var value = localStorage[key1];
+      this.dataTotal.push(JSON.parse(localStorage[key1]))
+      console.log(key1 + " => " + value);
+      this.totalPrice += JSON.parse(localStorage[key1]).price;
+    };
 
-(<HTMLInputElement>document.getElementById("totalPrice")).innerText = this.totalPrice
+    (<HTMLInputElement>document.getElementById("totalPrice")).innerText = this.totalPrice
   }
 
 
@@ -390,7 +417,7 @@ export class ShippingCartDialogComponent {
     this._snackBar.openFromComponent(PizzaPartyComponent, {
       duration: 6000,
       data: message
-      
+
     });
   }
 

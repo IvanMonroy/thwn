@@ -34,6 +34,16 @@ export class GlobalThingsService {
     )
   }
 
+    // GET
+    GetCustomModel(model,data): Observable<any[]> {
+      this.httpOptions['params'] = JSON.stringify(data)
+      return this.http.get<any[]>(this.baseurl + '/' + model, this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.errorHandl)
+      )
+    }
+
   // GET
   GetAllModel(model): Observable<any[]> {
     return this.http.get<any[]>(this.baseurl + '/' + model + '/')
