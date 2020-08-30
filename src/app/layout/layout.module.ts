@@ -6,7 +6,8 @@ import {
   LayoutToolsComponent,
   BottomSheetOverviewExampleSheet,
   DialogOverviewExampleDialog,
-  TermsConditionDialogComponent
+  TermsConditionDialogComponent,
+  WarningDialogComponent
 } from "./layout.tools";
 
 import { AppRoutingModule } from "../app-routing.module";
@@ -30,19 +31,22 @@ import {MatExpansionModule} from '@angular/material/expansion';
     LayoutToolsComponent,
     BottomSheetOverviewExampleSheet,
     DialogOverviewExampleDialog,
-    TermsConditionDialogComponent
+    TermsConditionDialogComponent,
+    WarningDialogComponent
   ],
   exports: [
     LayoutNavMenuComponent,
     LayoutHeaderComponent,
     BottomSheetOverviewExampleSheet,
     DialogOverviewExampleDialog,
-    TermsConditionDialogComponent
+    TermsConditionDialogComponent,
+    WarningDialogComponent
   ],
   entryComponents: [
     BottomSheetOverviewExampleSheet,
     DialogOverviewExampleDialog,
-    TermsConditionDialogComponent
+    TermsConditionDialogComponent,
+    WarningDialogComponent
   ],
   imports: [
     CommonModule,

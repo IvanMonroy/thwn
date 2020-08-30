@@ -36,7 +36,15 @@ export class NewsIndexComponent implements OnInit {
 
     this.subscription =  this.globalService.GetAllModel(this.model).subscribe((data: any[]) => {
       console.log(data);
+      for (let index = 0; index < data['data'].length; index++) {
+        data['data'][index].updated_at = data['data'][index].updated_at.split('T')[0]
+      }
+      for (let index = 0; index < data['title'].length; index++) {
+        data['title'][index].updated_at = data['title'][index].updated_at.split('T')[0]
+      }
+
       this.news = data['data'];
+
       this.news2 = data['title'];
     })
 

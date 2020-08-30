@@ -3,7 +3,19 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
+<div class="container">
+    <br>
+    <div id="parallax-world-of-ugg">
 
+      <section>
+       <div class="title" style="background:transparent;">
+         <h3>Conoce más de nuestras</h3>
+         <h1> noticias</h1>
+       </div>
+     </section> 
+   </div>
+  <br>
+</div>
 
 <div class="container">
     <div class="row">
@@ -20,7 +32,7 @@
                     </h1>
                     <span class="meta">
 
-                        <span><i class="glyphicon glyphicon-time"></i> Mar 16, 2020</span>
+                        <span><i class="glyphicon glyphicon-time"></i> {{new.updated_at}}</span>
                     </span>
                 </div>
                 <img class=" media-object"  [routerLink]="['/news-path/'+ new.id]" [src]="new.img_url_one"  onError="this.src='https://media.istockphoto.com/vectors/cartoon-funny-cat-on-page-404-vector-flat-illustration-the-character-vector-id993443850?k=6&m=993443850&s=170667a&w=0&h=vUe-b3pWMRbYq1AV_GNzgmok7VLYuZ8T0jKkcoLmTM8='"  data-src="holder.js/570x342" style="width: 570px; height: 342px;" data-holder-rendered="true">
@@ -43,7 +55,7 @@
                     </h1>
                     <span class="meta">
 
-                        <span><i class="glyphicon glyphicon-time"></i> Mar 16, 2020</span>
+                        <span><i class="glyphicon glyphicon-time"></i> {{new2.updated_at}}</span>
                     </span>
                 </div>
                 <img class=" media-object"  [routerLink]="['/news-path/'+ new2.id]" [src]="new2.img_url_one"  onError="this.src='https://media.istockphoto.com/vectors/cartoon-funny-cat-on-page-404-vector-flat-illustration-the-character-vector-id993443850?k=6&m=993443850&s=170667a&w=0&h=vUe-b3pWMRbYq1AV_GNzgmok7VLYuZ8T0jKkcoLmTM8='"  data-src="holder.js/570x342" style="width: 570px; height: 342px;" data-holder-rendered="true">

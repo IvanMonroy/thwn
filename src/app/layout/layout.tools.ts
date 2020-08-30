@@ -352,3 +352,80 @@ export class TermsConditionDialogComponent {
     this.dialogRef.close();
   }
 }
+
+
+
+
+@Component({
+  selector: "warning-dialog",
+  styleUrls: ['./layout.tools.scss'],
+  template: `
+  <div mat-dialog-content>
+  
+<div class="how-section1">
+<div class="row">
+    <div class="col-md-6 how-img">
+        <img src="https://www.akeneo.com/wp-content/uploads/2018/06/Akeneo_Illustration_Website_Make_a_great_impression_Element@2x-1.png" class="rounded-circle img-fluid" alt=""/>
+    </div>
+    <div class="col-md-6">
+        <h4>Bienvenido a nuestra sección de productos</h4>
+    <p class="text-muted">
+    En está sección encontraras el lsitado de los productos que se encuentran en ente momento en nuestro almacen,
+    además de la disponibilidad y el precio de los mismos.
+    </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <h4>Actualmente no contamos con la funcionalidad de pago en línea</h4>
+                     <p class="text-muted">Para los clientes  que esten interesados en nuestros porductos
+                     queremos informar que actualmente no contamos con una funcionalidad de pago en línea pero
+                     tenemos otras funcionalidades, podrás llenar un carrito de compras, revisar tu precio total, variar tus cantidades
+                     y enviarnos tu carrito de compras vía WhatsApp o correo electronico para hacer una cotización
+                     </p>
+    </div>
+    <div class="col-md-6 how-img">
+        <img src="https://www.pngitem.com/pimgs/m/291-2914100_google-pay-android-illustration-mobile-phone-hd-png.png" class="rounded-circle img-fluid" alt=""/>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 how-img">
+         <img src="https://us.123rf.com/450wm/jemastock/jemastock2006/jemastock200600513/148318972-shopping-cart-commercial-with-shirts-vector-illustration-design.jpg?ver=6" class="rounded-circle img-fluid" alt=""/>
+    </div>
+    <div class="col-md-6">
+        <h4>Agrega nuestros productos al carrito.</h4>
+                     <p class="text-muted">
+                     Cada uno de nuestros productos posee algunos botones cada uno con diferente funcionalidad,
+                     En el primero(Lupa) podrás ver una pantalla con más información del producto, además podrás calcular
+                     el precio de diferentes cantidades y agregar el total al carrito de compra,
+                     El segundo botón(El carrito) te permitirá agregar el producto al carrito con una sola cantidad y el tercero(La bolsa)
+                     te permitirá ver el carrito de compras de los productos que llevas actualmente.
+                     </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <h4>Siempre podrás ver tu carrito de compras.</h4>
+                    <p class="text-muted">
+                   Tu carrito de compras siempre se conservara, aunque navegues en nuestras demás y vuelvas a revisarlo siempre estará allí, en él podrás ver el valor total 
+                    o eliminar cualquier producto que ya no desees.
+                    </p>
+    </div>
+    <div class="col-md-6 how-img">
+        <img src="https://www.pedrenland.com/wp-content/uploads/2020/02/custom-couple-with-pet-portrait-illustration.jpg" class="rounded-circle img-fluid" alt=""/>
+    </div>
+</div>
+</div>
+    </div>
+  `
+})
+export class WarningDialogComponent {
+  constructor(
+    public dialogRef: MatDialogRef<WarningDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData
+  ) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+}

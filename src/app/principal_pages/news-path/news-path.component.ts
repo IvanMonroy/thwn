@@ -9,6 +9,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { PizzaPartyComponent } from '../find-us/find-us.component';
 import { MatButtonModule } from '@angular/material/button';
 import { TermsConditionDialogComponent } from 'src/app/layout/layout.tools';
+import {WarningDialogComponent} from 'src/app/layout/layout.tools';
 import { Meta } from '@angular/platform-browser';
 
 /** Error when invalid control is dirty, touched, or submitted. */
@@ -84,28 +85,12 @@ export class NewsPathComponent implements OnInit, OnDestroy {
       this.titlePage = data['data'].title
       this.header = data['title'];
       console.log(this.backgroudBanner);
-      this.meta.addTags([
-        { property: 'og:locale', content: "en_US" },
-        { property: 'og:type', content: "article" },
-        { property: 'og:title', content: this.bodyOne },
-        { property: 'og:description', content: this.bodyOne },
-        { property: 'og:url', content: document.location.href },
-        { property: 'og:site_name', content: this.bodyOne },
-        { property: 'article:tag', content: this.bodyOne },
-        { property: 'article:section', content: "Nueva noticia Tecnihidráulicos" },
-        { property: 'og:image', content: this.backgroudBanner },
-        { property: 'og:image:secure_url', content: this.backgroudBanner },
-        { property: 'og:image:width', content: "900" },
-        { property: 'og:image:height', content: "560" },
-        { charset: 'UTF-8' }
-      ]);
+ 
     })
-    debugger
 
   }
 
   ngOnInit() {
-
   }
 
   ngAfterViewInit() {

@@ -8,7 +8,7 @@ import { map, startWith, debounce } from 'rxjs/operators';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { error } from 'util';
-import { DialogOverviewExampleDialog } from 'src/app/layout/layout.tools';
+import { DialogOverviewExampleDialog, WarningDialogComponent } from 'src/app/layout/layout.tools';
 import { PizzaPartyComponent } from '../find-us/find-us.component';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -43,7 +43,7 @@ export class QueryListsComponent implements OnInit, OnDestroy {
     private _snackBar: MatSnackBar,
     private _sanitizer: DomSanitizer,
     public formBuilder: FormBuilder,
-  
+
 
   ) {
     this.activatedRoute.data.subscribe(data => {
@@ -56,14 +56,13 @@ export class QueryListsComponent implements OnInit, OnDestroy {
     this.form = this.formBuilder.group({
       filter: ['']
     });
-    
+
   }
-  
+
 
 
 
   ngOnInit() {
-
     this.subscription = this.globalService.GetAllModel(this.model).subscribe(
       (data: any[]) => {
         for (var i = 0; i < data['data'].length; i++) {
@@ -74,17 +73,20 @@ export class QueryListsComponent implements OnInit, OnDestroy {
       })
 
     console.log("Subscription " + this.tittle + this.subscription.closed);
+
+
+    this.openWarning();
   }
 
-  getByDesc(){
+  getByDesc() {
     var formData: any = new FormData();
-    formData.append("filter", this.form.get('filter').value);  
+    formData.append("filter", this.form.get('filter').value);
     this.postForm(formData);
- 
+
   }
 
-  postForm(formData){
-    this.http.post('https://willreyn-api.herokuapp.com/api/products/get_by_desc',formData).subscribe(
+  postForm(formData) {
+    this.http.post('https://willreyn-api.herokuapp.com/api/products/get_by_desc', formData).subscribe(
       (data: any[]) => {
         for (var i = 0; i < data['data'].length; i++) {
           data['data'][i].imgurl = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + data['data'][i].imgurl);
@@ -92,7 +94,7 @@ export class QueryListsComponent implements OnInit, OnDestroy {
         }
         this.data = data['data']
       })
-    
+
   }
 
   ngOnDestroy() {
@@ -105,6 +107,16 @@ export class QueryListsComponent implements OnInit, OnDestroy {
       duration: 6000,
       data: message
 
+    });
+  }
+
+  openWarning(): void {
+    const dialogRef = this.dialog.open(WarningDialogComponent, {
+      width: '100%',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
     });
   }
 
@@ -292,76 +304,81 @@ export class DetailsDialogComponent {
   template: `
   <div mat-dialog-content style="height: 400px">
   <mat-toolbar color="primary" style="width:100%">
-  <mat-toolbar-row>
-  <span>Carrito de compra</span>
-  <span class="example-spacer"></span>
-  <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">shopping_cart</mat-icon>
-</mat-toolbar-row>
+      <mat-toolbar-row>
+          <span>Carrito de compra</span>
+          <span class="example-spacer"></span>
+          <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">shopping_cart</mat-icon>
+      </mat-toolbar-row>
 
-</mat-toolbar>
+  </mat-toolbar>
   <div class="container">
-   <div class="card shopping-cart">
+      <div class="card shopping-cart">
 
-            <div class="card-body">
-                    <!-- PRODUCT -->
-                    <div class="row" style="margin-top: 10px" *ngFor="let product of dataTotal">
-                        <div class="col-12 col-sm-12 col-md-2 text-center">
-                        <img width="120px" height="80px" onError="this.src='../../../assets/images/item-not-found.png'"
-                        data-src="holder.js/120x80" style="width: 120px; height: 80px; max-width: 100%;"
-                        data-holder-rendered="true" src="{{product.imgurl}}" class="img-responsive">
+          <div class="card-body">
+              <!-- PRODUCT -->
+              <div class="row" style="margin-top: 10px" *ngFor="let product of dataTotal">
+                  <div class="col-12 col-sm-12 col-md-2 text-center">
+                      <img width="120px" height="80px" onError="this.src='../../../assets/images/item-not-found.png'"
+                          data-src="holder.js/120x80" style="width: 120px; height: 80px; max-width: 100%;"
+                          data-holder-rendered="true" src="{{product.imgurl}}" class="img-responsive">
 
-                               
-                        </div>
-                        <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
-                            <h4 class="product-name"><strong>{{ product.name }}</strong></h4>
-                            <h4>
-                                <small>{{product.name + " " + product.mark}}</small>
-                            </h4>
-                        </div>
-                        <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
-                            <div class="col-4 col-sm-4 col-md-4 col-md-6 text-md-right" style="padding-top: 5px">
-                                <h6><strong>{{product.price}} <span class="text-muted">$</span></strong></h6>
-                            </div>
-                            <div class="col-3 col-sm-3 col-md-3">
-                            </div>
 
-                            <div class="col-2 col-sm-2 col-md-2 text-right">
-                              
+                  </div>
+                  <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
+                      <h4 class="product-name"><strong>{{ product.name }}</strong></h4>
+                      <h4>
+                          <small>{{product.name + " " + product.mark}}</small>
+                      </h4>
+                  </div>
+                  <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
+                      <div class="col-4 col-sm-4 col-md-4 col-md-6 text-md-right" style="padding-top: 5px">
+                          <h6><strong>{{product.price}} <span class="text-muted">$</span></strong></h6>
+                      </div>
+                      <div class="col-3 col-sm-3 col-md-3">
+                      </div>
+
+                      <div class="col-2 col-sm-2 col-md-2 text-right">
+
                           <div class="example-flex-container">
-                            <div class="example-button-container">
-                              <button mat-mini-fab color="primary"
-                                (click)="removeToLocalStorage(product.name)"
-                                aria-label="Remover del carrito" title="Remover del carrito">
-                                <mat-icon>remove_shopping_cart</mat-icon>
-                              </button>
-                            </div>
+                              <div class="example-button-container">
+                                  <button mat-mini-fab color="primary" (click)="removeToLocalStorage(product.name)"
+                                      aria-label="Remover del carrito" title="Remover del carrito">
+                                      <mat-icon>remove_shopping_cart</mat-icon>
+                                  </button>
+                              </div>
                           </div>
 
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <!-- END PRODUCT -->
-                <div class="pull-right">
-                    <a href="" class="btn btn-outline-secondary pull-right">
-                        Seguir comprando
-                    </a>
-                </div>
-            </div>
-            <div class="card-footer">
-                <div class="coupon col-md-5 col-sm-5 no-padding-left pull-left">
-                    <div class="row">
-                    </div>
-                </div>
-                <div class="pull-right" style="margin: 10px">
-                    <a href="" class="btn btn-success pull-right">Checkout</a>
-                    <div class="pull-right" style="margin: 5px">
-                        Total price: <b id="totalPrice">50.00€</b>
-                    </div>
-                </div>
-            </div>
-        </div>
-</div>
+                      </div>
+                  </div>
+              </div>
+              <h5 id="MessageEmpty" style="display: none;">El carrito está vacio 🛒</h5>
+              <hr>
+              <!-- END PRODUCT -->
+              <div class="pull-right">
+                  <button mat-mini-fab color="primary" (click)="onNoClick()" aria-label="Seguir comprando"
+                      title="Seguir comprando">
+                      <mat-icon>keyboard_backspace</mat-icon>
+                  </button>
+              </div>
+          </div>
+          
+          <div class="card-footer">
+              <div class="coupon col-md-5 col-sm-5 no-padding-left pull-left">
+                  <div class="row">
+                  </div>
+              </div>
+              <div class="pull-right" style="margin: 10px">
+                  <button mat-mini-fab color="primary" style="background-color: #ce4141 !important;"
+                      (click)="clearCart()" aria-label="Vaciar carrito" title="Vaciar carrito">
+                      <mat-icon>refresh</mat-icon>
+                  </button>
+                  <div class="pull-right" style="margin: 5px">
+                      Total: <b id="totalPrice">{{totalPrice}}</b>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
   `
 })
 
@@ -369,7 +386,7 @@ export class DetailsDialogComponent {
 export class ShippingCartDialogComponent {
   dataExt: any;
   dataTotal = [];
-  totalPrice: any;
+  totalPrice: any = 0;
   constructor(
     public dialogRef: MatDialogRef<ShippingCartDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
@@ -381,8 +398,10 @@ export class ShippingCartDialogComponent {
       var value = localStorage[key];
       this.dataTotal.push(JSON.parse(localStorage[key]))
       console.log(key + " => " + value);
-      this.totalPrice = JSON.parse(localStorage[key]).price;
+      this.totalPrice += parseFloat(JSON.parse(localStorage[key]).price);
     }
+
+    setTimeout(function () { localStorage.length == 0 ? document.getElementById("MessageEmpty").style.display = "" : ""; }, 1000)
 
     this.dataExt = data;
     console.log(this.dataTotal)
@@ -407,11 +426,16 @@ export class ShippingCartDialogComponent {
       console.log(key1 + " => " + value);
       this.totalPrice += JSON.parse(localStorage[key1]).price;
     };
-
-    (<HTMLInputElement>document.getElementById("totalPrice")).innerText = this.totalPrice
   }
 
-
+  clearCart() {
+    localStorage.clear();
+    this.onNoClick();
+    var message = [];
+    message["message"] = "El carrito ha sido vaciado 🗑️";
+    message["data"] = ".";
+    this.openSnackBar(message)
+  }
 
   openSnackBar(message: any[]) {
     this._snackBar.openFromComponent(PizzaPartyComponent, {
